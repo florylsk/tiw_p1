@@ -30,7 +30,7 @@
   		</script>
 
 </head>
-<body>
+<body class="with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true" data-set-preferred-mode-onload="true">
 
 
 <!-- Navbar -->
