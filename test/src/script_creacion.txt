@@ -1,0 +1,6 @@
+use twi_p1;
+create table admins(username varchar(100) primary key, password varchar(100), firstname varchar(100), lastname varchar(100), mail varchar(100));
+insert into admins values('ajimenez','Y9gMQe&3A?','alvaro','jimenez','ajimenez@test.com');
+insert into admins values('jalvarez','_m6A!GVqVe','javier','alvarez','jalvarez@test.com');
+insert into admins values('phernandez','+gnMN7Ve93','pablo','hernandez','phernandez@test.com');
+commit;

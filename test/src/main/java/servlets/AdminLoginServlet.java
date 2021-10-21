@@ -2,15 +2,24 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
+import sql.IAdminConstants;
 
 
 @WebServlet(urlPatterns = {"/adminlog" })
@@ -27,14 +36,7 @@ public class AdminLoginServlet extends HttpServlet{
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse res)
 		    throws ServletException, IOException{
-		
-		
-		
-		RequestDispatcher reqDis =req.getRequestDispatcher("index.jsp");
-		reqDis.forward(req, res);
-
-		
-		/*PrintWriter pw = res.getWriter();
+		PrintWriter pw = res.getWriter();
 		String uName = req.getParameter(IAdminConstants.COLUMN_USERNAME);
 		String pWord = req.getParameter(IAdminConstants.COLUMN_PASSWORD);
 		try {
@@ -48,28 +50,26 @@ public class AdminLoginServlet extends HttpServlet{
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				System.out.println("ahhhh");
-				//req.getRequestDispatcher("pages/index.jsp").forward(req, res);
-				
-				
-				//res.sendRedirect("/pages/index.jsp");
+				RequestDispatcher reqDis =req.getRequestDispatcher("index.jsp");
+				reqDis.forward(req, res);
 				Cookie ck = new Cookie("username",uName);
 				
 			} else {
 
-				req.getRequestDispatcher("pages/access.jsp").forward(req, res);
+				req.getRequestDispatcher("access.jsp").forward(req, res);
 				
 				pw.println("<div class=\"tab\">Incorrect UserName or PassWord</div>");
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-		}*/
+		}
 		
 		
 	}
 	protected void doGet(HttpServletRequest req,HttpServletResponse res) throws ServletException,IOException{
-		PrintWriter pw = res.getWriter();
-		pw.println("test");
+		RequestDispatcher reqDis =req.getRequestDispatcher("access.jsp");
+		reqDis.forward(req, res);
 	}
 	
 	

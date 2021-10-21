@@ -73,7 +73,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                                             </div>
-                                            <input type="text" class="form-control" required placeholder="Usuario" id="username" />
+                                            <input type="text" name="username "class="form-control" required placeholder="Usuario" id="username" />
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -82,7 +82,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                                             </div>
-                                            <input type="password" class="form-control" required placeholder="Contraseña" id="login-password" />
+                                             <input type="password" name="password" class="form-control" required placeholder="Contraseña" id="password" />
                                         </div>
                                     </div>
                                     <input class="btn btn-primary" type="submit" value="Iniciar sesión">
