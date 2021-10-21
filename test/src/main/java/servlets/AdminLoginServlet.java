@@ -49,9 +49,16 @@ public class AdminLoginServlet extends HttpServlet{
 			ResultSet rs = ps.executeQuery();
 			
 			if (rs.next()) {
-				System.out.println("ahhhh");
+				String nombre=rs.getString(3);
+				String apellido=rs.getString(4);			
+				Cookie ck_username = new Cookie("ck_username",uName);
+				Cookie ck_nombre = new Cookie("ck_nombre",nombre);
+				Cookie ck_apellido=new Cookie("ck_apellido",apellido);
+				res.addCookie(ck_username);
+				res.addCookie(ck_nombre);
+				res.addCookie(ck_apellido);
 				req.getRequestDispatcher("index.jsp").forward(req, res);
-				Cookie ck = new Cookie("username",uName);
+				
 				
 			} else {
 
