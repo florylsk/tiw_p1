@@ -57,12 +57,12 @@ public class AdminLoginServlet extends HttpServlet{
 				res.addCookie(ck_username);
 				res.addCookie(ck_nombre);
 				res.addCookie(ck_apellido);
-				req.getRequestDispatcher("index.jsp").forward(req, res);
+				res.sendRedirect("index.jsp");
 				
 				
 			} else {
 
-				req.getRequestDispatcher("access.jsp").forward(req, res);
+				res.sendRedirect("access.jsp");
 				
 				pw.println("<div class=\"tab\">Incorrect UserName or PassWord</div>");
 			}

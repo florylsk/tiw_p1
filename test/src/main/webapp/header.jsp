@@ -54,7 +54,7 @@
                                 <span class="hidden-lm"><i class="fas fa-sun"></i> Modo claro</span>
                                 <span class="hidden-dm"><i class="fas fa-moon"></i> Modo oscuro</span>
                             </a>
-                            <a href="javascript:makeLogout()" class="dropdown-item text-danger"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+                            <a href="/test/adminlogout" class="dropdown-item text-danger"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
                         </div>
                     </div>
                 </div>
@@ -76,7 +76,7 @@
                                 <span class="hidden-dm"><i class="fas fa-moon"></i> Modo oscuro</span>
                             </a>
                             <a href="#" class="dropdown-item"><i class="fas fa-question"></i> Ayuda</a>
-                            <a href="javascript:makeLogout()" class="dropdown-item text-danger"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+                            <a href="/test/adminlogout" class="dropdown-item text-danger"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
                         </div>
                     </div>
                 </div>
