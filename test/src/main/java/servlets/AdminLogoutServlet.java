@@ -33,14 +33,10 @@ public class AdminLogoutServlet extends HttpServlet{
  
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
-		Cookie ck_username = new Cookie("ck_username","");
-		Cookie ck_nombre = new Cookie("ck_nombre","");
-		Cookie ck_apellido=new Cookie("ck_apellido","");
-		res.addCookie(ck_username);
-		res.addCookie(ck_nombre);
-		res.addCookie(ck_apellido);
-		//req.getRequestDispatcher("access.jsp").forward(req, res);
+    	HttpSession session = req.getSession();
+		session.invalidate();
 		res.sendRedirect("access.jsp");
+	
     	
     	
     }
@@ -53,4 +49,3 @@ public class AdminLogoutServlet extends HttpServlet{
 	
 	
 }
-

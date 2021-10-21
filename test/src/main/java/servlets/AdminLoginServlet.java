@@ -51,18 +51,15 @@ public class AdminLoginServlet extends HttpServlet{
 			if (rs.next()) {
 				String nombre=rs.getString(3);
 				String apellido=rs.getString(4);			
-				Cookie ck_username = new Cookie("ck_username",uName);
-				Cookie ck_nombre = new Cookie("ck_nombre",nombre);
-				Cookie ck_apellido=new Cookie("ck_apellido",apellido);
-				res.addCookie(ck_username);
-				res.addCookie(ck_nombre);
-				res.addCookie(ck_apellido);
-				res.sendRedirect("index.jsp");
+				HttpSession session = req.getSession();
+				session.setAttribute("nombre", nombre);
+				session.setAttribute("apellido", apellido);
+				req.getRequestDispatcher("index.jsp").forward(req, res);
 				
 				
 			} else {
 
-				res.sendRedirect("access.jsp");
+				req.getRequestDispatcher("access.jsp").forward(req, res);
 				
 				pw.println("<div class=\"tab\">Incorrect UserName or PassWord</div>");
 			}
