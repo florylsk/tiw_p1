@@ -1,5 +1,6 @@
 package servlets;
 
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -20,6 +21,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import sql.IAdminConstants;
+
 
 
 @WebServlet(urlPatterns = {"/adminlog" })
@@ -43,15 +45,12 @@ public class AdminLoginServlet extends HttpServlet{
 			Context ctx = new InitialContext();
 			DataSource ds = (DataSource) ctx.lookup("tiw_p1DS");
 			Connection con = ds.getConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM " + IAdminConstants.TABLE_ADMINS + " WHERE  "
-					+ IAdminConstants.COLUMN_USERNAME + "=? AND " + IAdminConstants.COLUMN_PASSWORD + "=?");
-			ps.setString(1, uName);
-			ps.setString(2, pWord);
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM " + IAdminConstants.TABLE_ADMINS+" where username='"+uName+"' AND password='"+pWord+"'");
 			ResultSet rs = ps.executeQuery();
+			
 			if (rs.next()) {
 				System.out.println("ahhhh");
-				RequestDispatcher reqDis =req.getRequestDispatcher("index.jsp");
-				reqDis.forward(req, res);
+				req.getRequestDispatcher("index.jsp").forward(req, res);
 				Cookie ck = new Cookie("username",uName);
 				
 			} else {
