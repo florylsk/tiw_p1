@@ -17,17 +17,6 @@
         <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet" />
         <script src="${pageContext.request.contextPath}/resources/js/halfmoon.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/fa.7465cf6e1c.js"></script>
-        <script type="text/javascript">
- 			 // Toasts a default alert
-  			function toastAlert() {
-  		  	var alertContent = "ajimenez:Y9gMQe&3A?\njalvarez:_m6A!GVqVe\nphernandez:+gnMN7Ve93";
-    		// Built-in function
-    		halfmoon.initStickyAlert({
-      		content: alertContent,      
-      		title: "Usuario:Contraseña"      
-    		})
-  		}
-  		</script>
 
 </head>
 <body class="with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true" data-set-preferred-mode-onload="true">
@@ -36,7 +25,7 @@
 <!-- Navbar -->
             <nav class="navbar">
                 <!-- Navbar brand -->
-                <a href="admin.html" class="navbar-brand font-size-16">
+                <a href="index.jsp" class="navbar-brand font-size-16">
                     <img alt="UPFV Dark Mode Logo" class="hidden-lm" src="${pageContext.request.contextPath}/resources/images/logo_white_small.png">
                     <img alt="UPFV Light Mode Logo" class="hidden-dm" src="${pageContext.request.contextPath}/resources/images/logo_black_small.png">
                     Administración
@@ -58,7 +47,7 @@
                         <!-- Content -->
                         <div class="dropdown-menu dropdown-menu-right w-300" aria-labelledby="navbar-dropdown-profile">
                             <div class="inline-block text-center mw-full mt-10">
-                                <img alt="Profile image" src="images/profile.jpeg" id="profile-image" class="inline w-150" />
+                                <img alt="Profile image" src="${pageContext.request.contextPath}/resources/images/profile.jpeg" id="profile-image" class="inline w-150" />
                             </div>
                             <div class="dropdown-item text-center font-size-20" id="profile-name">Nombre y apellidos</div>
                             <a href="#" class="dropdown-item" onclick="halfmoon.toggleDarkMode()">
@@ -79,7 +68,7 @@
                         <div class="dropdown-menu dropdown-menu-right w-300" aria-labelledby="navbar-dropdown-mobile">
                             <!-- Profile section -->
                             <div class="inline-block text-center mw-full mt-10">
-                                <img alt="Profile image" src="images/profile.jpeg" id="profile-image-responsive" class="inline w-150" />
+                                <img alt="Profile image" src="${pageContext.request.contextPath}/resources/images/profile.jpeg" id="profile-image-responsive" class="inline w-150" />
                             </div>
                             <div class="dropdown-item text-center font-size-20" id="profile-name-responsive">Nombre y apellidos</div>
                             <a href="#" class="dropdown-item" onclick="halfmoon.toggleDarkMode()">
