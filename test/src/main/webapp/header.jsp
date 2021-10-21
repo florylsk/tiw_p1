@@ -49,7 +49,7 @@
                             <div class="inline-block text-center mw-full mt-10">
                                 <img alt="Profile image" src="${pageContext.request.contextPath}/resources/images/profile.jpeg" id="profile-image" class="inline w-150" />
                             </div>
-                            <div class="dropdown-item text-center font-size-20" id="profile-name">Nombre y apellidos</div>
+                            <div class="dropdown-item text-center font-size-20" id="profile-name">${cookie['ck_nombre'].getValue()} ${cookie['ck_apellido'].getValue()}</div>
                             <a href="#" class="dropdown-item" onclick="halfmoon.toggleDarkMode()">
                                 <span class="hidden-lm"><i class="fas fa-sun"></i> Modo claro</span>
                                 <span class="hidden-dm"><i class="fas fa-moon"></i> Modo oscuro</span>
