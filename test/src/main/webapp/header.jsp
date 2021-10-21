@@ -22,8 +22,16 @@
 <body class="with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true" data-set-preferred-mode-onload="true">
 
 
+	<div class="page-wrapper with-navbar with-sidebar" data-sidebar-type="overlayed-sm-and-down">
+
 <!-- Navbar -->
             <nav class="navbar">
+            	<div class="navbar-content">
+        			 <button id="toggle-sidebar-btn" class="btn btn-action" type="button" onclick="halfmoon.toggleSidebar()">
+            			 <img class="hidden-lm" src="${pageContext.request.contextPath}/resources/images/Hamburger_icon_dark.png" height="100%" width="70%" alt="missing file">
+            			 <img class="hidden-dm" src="${pageContext.request.contextPath}/resources/images/Hamburger_icon_light.png" height="100%" width="70%" alt="missing file">
+        				 </button>
+      			 </div>
                 <!-- Navbar brand -->
                 <a href="index.jsp" class="navbar-brand font-size-16">
                     <img alt="UPFV Dark Mode Logo" class="hidden-lm" src="${pageContext.request.contextPath}/resources/images/logo_white_small.png">
@@ -81,4 +89,21 @@
                     </div>
                 </div>
             </nav>
+            
+            <!-- Sidebar overlay -->
+      <div class="sidebar-overlay" onclick="halfmoon.toggleSidebar()"></div>
+
+      <!-- Sidebar start -->
+      <div class="sidebar">
+        <div class="sidebar-menu">
+          <!-- Sidebar links and titles -->
+          <h5 class="sidebar-title">Funcionalidades</h5>
+          <div class="sidebar-divider"></div>
+          <a href="#" class="sidebar-link">Registro de accesos</a>
+          <a href="#" class="sidebar-link">Control de accesos</a>
+          <a href="#" class="sidebar-link">CRUD</a>
+          <a href="#" class="sidebar-link">Gestión de inscripciones de máster</a>
+      </div>
+      </div>
+      <!-- Sidebar end -->
 
