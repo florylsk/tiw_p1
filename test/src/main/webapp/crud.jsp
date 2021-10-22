@@ -114,8 +114,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <h5 class="modal-title">Modificar estudiante</h5>
-                        <br>
-                        <h6 class="modal-title">No puede modificar el NIA</h6>
+                        <h6 class="modal-text">(No puede modificar el NIA)</h6>
                         
                         <form id="add-student" action="updateStudent" method="post">
                             <div class="form-group">
