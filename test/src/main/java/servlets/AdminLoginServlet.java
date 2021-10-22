@@ -40,6 +40,7 @@ public class AdminLoginServlet extends HttpServlet{
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse res)
 		    throws ServletException, IOException{
+		
 		PrintWriter pw = res.getWriter();
 		String uName = req.getParameter(IAdminConstants.COLUMN_USERNAME);
 		String pWord = req.getParameter(IAdminConstants.COLUMN_PASSWORD);

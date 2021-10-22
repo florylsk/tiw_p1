@@ -79,7 +79,124 @@
             <!-- Reference: https://www.gethalfmoon.com/docs/sticky-alerts-toasts -->
             <div class="sticky-alerts"></div>
 
-          
+          	<!-- Content -->
+            <div class="content-wrapper">
+                <div class="text-center mb-100">
+                	<form action="" class="text-center w-400 ">
+                		<div>
+   							<input type="text" class="form-control" id="Nia" placeholder="Nia" required="required">
+ 							<input class="btn btn-primary" type="submit" value="Buscar Usuario">				
+ 						</div>
+                	</form>
+                </div>
+                <!-- Courses and management will be shown here -->
+                <div id="admin-courses">
+                	<button onclick="addUser()" class="btn btn-square btn-primary ml-5 w-150" type="button"><i class="fas fa-user-plus"></i>     Añadir usuario</button> 
+                	<table class="table table-striped">
+            			<thead>
+              				<tr>
+                 				<th style="width: 25%">Nombre</th>
+                 				<th style="width: 25%">Apellidos</th>
+                 				<th style="width: 20%">Nia</th>
+                 				<th style="width: 15%">Fecha Nacimiento</th>
+                 				<th style="width: 15%" >Acciones</th>
+              				</tr>
+		            	</thead>
+        		    	<tbody>
+        		    		<tr>
+        		    			<th><!--Añadir nombre alumnos -->
+        		    				Luis  
+        		    			</th>
+        		    			<td><!--Añadir apellidos alumnos -->
+        		    				Gomez Hernandez
+        		    			</td>
+        		    			<td><!--Añadir Nia alumnos -->
+        		    				100406002
+        		    			</td>
+        		    			<td><!--Añadir fecha alumnos -->
+        		    				20/03/2000
+        		    			</td>
+        		    			<td>
+        		    				<button onclick="deleteUser()"class="btn btn-square btn-danger ml-5" type="button"><i class="fas fa-trash"></i></button>
+        		    				<button onclick="modifyUser()"class="btn btn-square btn-danger ml-5" type="button"><i class="fas fa-pencil"></i></button>
+        		    				
+        		    			</td>
+        		    			
+        		    		</tr>
+            			</tbody>
+            		</table>
+                </div>
+            </div>
+            
+            
+          <!--   document.querySelector("#admin-courses").innerHTML = "";
+    for (let i = 0; i < courses.length; i++) {
+        const course = courses[i];
+        const users = getUsersInCourse(course.id).sort((a, b) => {
+            return b.role - a.role;
+        });
+        var courseList =
+            '<div class="container-fluid mb-20">' +
+            '<div class="row vertical-center">' +
+            '    <h4 class="col-8 mb-10 pl-15">' +
+            course.name +
+            "</h4>" +
+            '    <div class="col-4 text-right pr-15">' +
+            '        <button onclick="showAssignUser(' +
+            course.id +
+            ')"class="btn mr-5" type="button"><i class="fas fa-user-plus"></i><span class="ml-5 d-none d-lg-inline"> Asignar usuario</span></button>' +
+            '        <button onclick="showDeleteCourse(' +
+            course.id +
+            ')"class="btn btn-square btn-danger ml-5" type="button"><i class="fas fa-trash"></i></button>' +
+            "    </div>" +
+            "</div>" +
+            '<table class="table table-striped">' +
+            "<thead>" +
+            "<tr>" +
+            '  <th style="width: 50%">Usuario</th>' +
+            '  <th style="width: 10%">Rol</th>' +
+            '  <th style="width: 30%" class="text-right">Acciones</th>' +
+            "</tr>" +
+            "</thead>" +
+            "<tbody>";
+
+        for (let j = 0; j < users.length; j++) {
+            const u = users[j];
+            var role;
+            switch (u.role) {
+                case 0:
+                    role = "Estudiante";
+                    break;
+                case 1:
+                    role = "Profesor";
+                    break;
+                case 2:
+                    role = "Administrador";
+                    break;
+            }
+            courseList +=
+                "<tr>" +
+                "   <th>" +
+                u.name +
+                "</th>" +
+                "   <td>" +
+                role +
+                "   </td>" +
+                '   <td class="text-right">' +
+                '<a href="mailto:' +
+                u.email +
+                ' "class="btn btn-square"><i class="fas fa-envelope"></i></a>' +
+                '<button onclick="showUnassign(' +
+                u.id +
+                ", " +
+                course.id +
+                ')" class="btn btn-square btn-danger ml-5" type="button"><i class="fas fa-user-minus"></i></button>' +
+                "   </td>" +
+                "</tr>";
+        }
+
+        courseList += '</tbody></table><div class="divider mt-0 mb-5 border-bottom"></div>';
+        document.querySelector("#admin-courses").innerHTML += courseList;-->
 
 
 
