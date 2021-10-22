@@ -36,7 +36,7 @@ public class studentDAO{
 			ps.setString(1, student.getFirstname());
 			ps.setString(2, student.getSurnames());
 			ps.setInt(3, student.getNIA());
-			ps.setInt(4, student.getNIA());
+			ps.setDate(4, student.getBirth());
 			ps.setInt(5, student.getNIA());
 			status=ps.executeUpdate();
 			con.close();

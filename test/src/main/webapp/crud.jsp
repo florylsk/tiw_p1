@@ -109,19 +109,36 @@
                 </div>
             </div>
             
-            <!-- Modal para borrar usuario -->
-             <div class="modal" id="modal-remove-student" tabindex="-1" role="dialog">
+            <!-- Modal para modificar usuario -->
+             <div class="modal" id="modal-update-student" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                        <h5 class="modal-title">Borrar estudiante</h5>
-                         <p>
-                            ¿Está seguro de querer eliminar al usuario
-                            <span id="course-delete-name-student"></span>?
-                        </p>
-                        <div class="text-right mt-20">
+                        <h5 class="modal-title">Modificar estudiante</h5>
+                        <br>
+                        <h6 class="modal-title">No puede modificar el NIA</h6>
+                        
+                        <form id="add-student" action="updateStudent" method="post">
+                            <div class="form-group">
+                                <label for="update-student-firstname" class="required">Nombre</label>
+                                <input type="text" name="firstname" id="update-student-firstname" class="form-control" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <label for="update-student-surnames" class="required">Apellidos</label>
+                                <input type="text" name="surnames" id="update-student-surnames" class="form-control" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <label for="update-student-NIA" class="required">NIA</label>
+                                <input type="number" name="NIA" id="update-student-NIA" class="form-control" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <label for="update-student-birth" class="required">Fecha de nacimiento</label>
+                                <input type="date" name="birth" id="update-student-birth" class="date" required="required" />
+                            </div>
+                            <div class="text-right mt-20">
                             <button class="btn mr-5" data-dismiss="modal" type="button">Cancelar</button>
-                            <button class="btn btn-danger" data-dismiss="modal" type="button" onclick="deleteCourse(this)">Eliminar</button>
-                        </div>
+                            <input class="btn btn-primary" type="submit" value="Modificar estudiante">
+                      	    </div>
+                        </form>
                         
                     </div>
                 </div>
@@ -182,7 +199,7 @@
         		    					${s.getBirth()}
         		    				</td>
         		    				<td class="text-right">
-        		    			   		<button onclick="modifyUser()"class="btn btn-square btn-primary ml-5" type="button"><i class="fas fa-edit"></i></button>
+        		    			   		<a href="#modal-update-student" class="btn btn-square btn-primary ml-5" role="button"><i class="fas fa-edit"></i></a>
         		    					<form action="deleteStudent" method="post">
     										<button type="submit"name="NIA" value="${s.getNIA()}"class="btn btn-square btn-danger ml-5" type="button" ><i class="fas fa-trash"></i></button>
 										</form>
@@ -190,8 +207,11 @@
         		    				</td>
         		    			</tr>
         		    		</c:forEach>
+        		    		
             			</tbody>
+            			
             		</table>
+            		<div class="divider mt-0 mb-5 border-bottom"></div>
                 </div>
             </div>
             
