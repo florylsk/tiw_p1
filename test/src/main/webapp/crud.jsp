@@ -32,10 +32,10 @@
                     Administración
                 </a>
                 <ul class="navbar-nav d-none d-md-flex"> <!-- d-none = display: none, d-md-flex = display: flex on medium screens and up (width > 768px) -->
-          			<li class="nav-item active">
-           				 <a href="home.jsp" class="nav-link">Home</a>
+          			<li class="nav-item">
+           				 <a href="index.jsp" class="nav-link">Home</a>
        			   </li>
-        			  <li class="nav-item">
+        			  <li class="nav-item active">
          			  <a href="crud.jsp" class="nav-link">CRUD</a>
         			 </li>
         			  <li class="nav-item">
@@ -72,22 +72,21 @@
                 </div>
 				
             </nav>
-
-
-
-	<div class="page-wrapper with-navbar with-navbar-fixed-bottom" data-sidebar-type="full-height overlayed-sm-and-down">
-           	 <!-- Sticky alerts (toasts), empty container -->
-           	 <!-- Reference: https://www.gethalfmoon.com/docs/sticky-alerts-toasts -->
-           	 <div class="sticky-alerts"></div>
+            
+            
+            <div class="page-wrapper with-navbar with-navbar-fixed-bottom" data-sidebar-type="full-height overlayed-sm-and-down">
+            <!-- Sticky alerts (toasts), empty container -->
+            <!-- Reference: https://www.gethalfmoon.com/docs/sticky-alerts-toasts -->
+            <div class="sticky-alerts"></div>
 
           
 
 
 
 
-		</div>
+	</div>
 
-			</div>
+		</div>
 
 
 
@@ -99,23 +98,4 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            

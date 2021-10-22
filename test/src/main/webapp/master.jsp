@@ -32,14 +32,14 @@
                     Administración
                 </a>
                 <ul class="navbar-nav d-none d-md-flex"> <!-- d-none = display: none, d-md-flex = display: flex on medium screens and up (width > 768px) -->
-          			<li class="nav-item active">
-           				 <a href="#" class="nav-link">Home</a>
+          			<li class="nav-item">
+           				 <a href="index.jsp" class="nav-link">Home</a>
        			   </li>
         			  <li class="nav-item">
-         			  <a href="hacking/nmap.html" class="nav-link">CRUD</a>
+         			  <a href="crud.jsp" class="nav-link">CRUD</a>
         			 </li>
-        			  <li class="nav-item">
-        			   <a href="#" class="nav-link">Buscador de Máster</a>
+        			  <li class="nav-item active">
+        			   <a href="master.jsp" class="nav-link">Buscador de Máster</a>
        			  </li>
       			  </ul>
                 <!-- Navbar form. Here, search, help and profile buttons are shown -->
@@ -73,4 +73,29 @@
 				
             </nav>
             
+            
+            <div class="page-wrapper with-navbar with-navbar-fixed-bottom" data-sidebar-type="full-height overlayed-sm-and-down">
+            <!-- Sticky alerts (toasts), empty container -->
+            <!-- Reference: https://www.gethalfmoon.com/docs/sticky-alerts-toasts -->
+            <div class="sticky-alerts"></div>
 
+          
+
+
+
+
+	</div>
+
+		</div>
+
+
+
+
+	</body>
+
+</html>
+
+
+
+
+            
