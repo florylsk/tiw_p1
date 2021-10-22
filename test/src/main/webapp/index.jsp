@@ -75,19 +75,20 @@
 
 
 
-	<div class="page-wrapper with-navbar with-navbar-fixed-bottom" data-sidebar-type="full-height overlayed-sm-and-down">
-           	 <!-- Sticky alerts (toasts), empty container -->
-           	 <!-- Reference: https://www.gethalfmoon.com/docs/sticky-alerts-toasts -->
-           	 <div class="sticky-alerts"></div>
+				<div class="page-wrapper with-navbar with-navbar-fixed-bottom" data-sidebar-type="full-height overlayed-sm-and-down">
+           	 			<!-- Sticky alerts (toasts), empty container -->
+           				 <!-- Reference: https://www.gethalfmoon.com/docs/sticky-alerts-toasts -->
+           				 <div class="sticky-alerts"></div>
 
           
 
 
 
 
-		</div>
+					</div>
 
-			</div>
+		
+		</div>
 
 
 

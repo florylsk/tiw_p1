@@ -57,20 +57,6 @@ public class Admin{
 		this.mail=mail;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 }

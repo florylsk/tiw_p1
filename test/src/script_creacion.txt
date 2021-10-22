@@ -4,3 +4,8 @@ insert into admins values('ajimenez','Y9gMQe&3A?','alvaro','jimenez','ajimenez@t
 insert into admins values('jalvarez','_m6A!GVqVe','javier','alvarez','jalvarez@test.com');
 insert into admins values('phernandez','+gnMN7Ve93','pablo','hernandez','phernandez@test.com');
 commit;
+
+
+use twi_p1;
+create table students(firstname varchar(40), surname1 varchar(40),surname2 varchar(40), NIA int(9) primary key, photo blob);
+commit;
