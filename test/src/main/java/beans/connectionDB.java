@@ -4,10 +4,7 @@ import java.sql.*;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
-
-import sql.IAdminConstants;
 
 
 

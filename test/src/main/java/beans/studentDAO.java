@@ -13,12 +13,11 @@ public class studentDAO{
 		int status=0;
 		try {
 			Connection con=connectionDB.getConnection();
-			PreparedStatement ps= con.prepareStatement("insert into students(firstname,surname1,surname2,NIA) values(?,?,?,?)");
+			PreparedStatement ps= con.prepareStatement("insert into students(firstname,surnames,NIA,birth) values(?,?,?,?)");
 			ps.setString(1, student.getFirstname());
-			ps.setString(2, student.getSurname1());
+			ps.setString(2, student.getSurnames());
 			ps.setInt(3, student.getNIA());
 			ps.setDate(4, student.getBirth());  //formato de la fecha
-
 			status=ps.executeUpdate();
 			con.close();
 		}
@@ -33,11 +32,12 @@ public class studentDAO{
 		int status=0;
 		try {
 			Connection con=connectionDB.getConnection();
-			PreparedStatement ps=con.prepareStatement("update students set firstname=?,surname1=?,surname2=?,NIA=? where NIA=?");
+			PreparedStatement ps=con.prepareStatement("update students set firstname=?,surnames=?,NIA=?,birth=? where NIA=?");
 			ps.setString(1, student.getFirstname());
-			ps.setString(2, student.getSurname1());
+			ps.setString(2, student.getSurnames());
 			ps.setInt(3, student.getNIA());
 			ps.setInt(4, student.getNIA());
+			ps.setInt(5, student.getNIA());
 			status=ps.executeUpdate();
 			con.close();
 		}
@@ -76,7 +76,7 @@ public class studentDAO{
 			PreparedStatement ps=con.prepareStatement("select * from students");
 			ResultSet rs=ps.executeQuery();
 			while (rs.next()) {
-				Student s = new Student(rs.getString("firstname"),rs.getString("surname1"),rs.getInt("NIA"),rs.getLocalDate("birth")); //Formato fecha
+				Student s = new Student(rs.getString("firstname"),rs.getString("surnames"),rs.getInt("NIA"),rs.getDate("birth")); //Formato fecha
 				students.add(s);
 			}
 			con.close();
@@ -100,7 +100,7 @@ public class studentDAO{
 			ps.setInt(1, NIA);
 			ResultSet rs=ps.executeQuery();  
 			while(rs.next()) {
-				s=new Student(rs.getString("firstname"),rs.getString("surname1"),rs.getString("surname2"),rs.getInt("NIA"));
+				s=new Student(rs.getString("firstname"),rs.getString("surnames"),rs.getInt("NIA"),rs.getDate("birth"));
 			}	
 			con.close();
 		}

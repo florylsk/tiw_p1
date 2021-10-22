@@ -19,6 +19,8 @@
 
 </head>
 <body class="with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true" data-set-preferred-mode-onload="true">
+	<%@page import="beans.*,java.util.*"%>  
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
 
 	<div class="page-wrapper with-navbar" data-sidebar-type="overlayed-sm-and-down">
 	
@@ -75,17 +77,49 @@
             
             
             <div class="page-wrapper with-navbar with-navbar-fixed-bottom" data-sidebar-type="full-height overlayed-sm-and-down">
+            <!-- Modal para crear usuario -->
+             <div class="modal" id="modal-add-student" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <h5 class="modal-title">Añadir estudiante</h5>
+                        <form id="add-student" action="addStudent" method="post">
+                            <div class="form-group">
+                                <label for="create-student-firstname" class="required">Nombre</label>
+                                <input type="text" name="firstname" id="create-student-firstname" class="form-control" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <label for="create-student-surnames" class="required">Apellidos</label>
+                                <input type="text" name="surnames" id="create-student-surnames" class="form-control" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <label for="create-student-NIA" class="required">NIA</label>
+                                <input type="number" name="NIA" id="create-student-NIA" class="form-control" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <label for="create-student-birth" class="required">Fecha de nacimiento</label>
+                                <input type="date" name="birth" id="create-student-birth" class="date" required="required" />
+                            </div>
+                            <div class="text-right mt-20">
+                            <button class="btn mr-5" data-dismiss="modal" type="button">Cancelar</button>
+                            <input class="btn btn-primary" type="submit" value="Añadir estudiante">
+                      	    </div>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
             <!-- Sticky alerts (toasts), empty container -->
             <!-- Reference: https://www.gethalfmoon.com/docs/sticky-alerts-toasts -->
             <div class="sticky-alerts"></div>
 			<div class="w-250 m-auto">
-               		<button onclick="addUser()" class="btn btn-square btn-primary w-150" type="button"><i class="fas fa-user-plus"></i>     Añadir usuario</button>                 
-                </div>
+               		<!-- <button onclick="addUser()" class="btn btn-square btn-primary w-150" type="button"><i class="fas fa-user-plus"></i>     Añadir usuario</button> -->   
+               		<a href="#modal-add-student" class="btn btn-primary btn-square w-150" role="button"><i class="fas fa-user-plus"></i>     Añadir estudiante</a>              
+            </div>
           	<!-- Content -->
             <div class="content-wrapper ">
             
             	<div class="w-250 m-auto p-20">
-               		<button onclick="addUser()" class="btn btn-square btn-primary w-150" type="button"><i class="fas fa-user-plus"></i>     Añadir usuario</button>                 
+               		<a href="#modal-add-student" class="btn btn-primary btn-square w-150" role="button"><i class="fas fa-user-plus"></i>     Añadir estudiante</a>                 
                 </div>
                 
                 <div class="w-400 m-auto my-20">
@@ -97,7 +131,10 @@
                 	</form>
                 </div>
                 
-                
+                <%  
+					List<Student> students=studentDAO.getAllStudents();
+					request.setAttribute("students",students);  
+				%>  
                 <!-- Courses and management will be shown here -->
                 <div id="admin-courses">
                 	<table class="table table-striped">
@@ -111,40 +148,27 @@
               				</tr>
 		            	</thead>
         		    	<tbody>
-        		    		<tr>
-        		    			<th><!--Añadir nombre alumnos -->
-        		    				Luis  
-        		    			</th>
-        		    			<td><!--Añadir apellidos alumnos -->
-        		    				Gomez Hernandez
-        		    			</td>
-        		    			<td><!--Añadir Nia alumnos -->
-        		    				100406002
-        		    			</td>
-        		    			<td><!--Añadir fecha alumnos -->
-        		    				20-03-2000
-        		    			</td>
-        		    			<td>
-        		    			    <button onclick="modifyUser()"class="btn btn-square btn-primary ml-5" type="button"><i class="fas fa-edit"></i></button>
-        		    				<button onclick="deleteUser()"class="btn btn-square btn-danger ml-5" type="button"><i class="fas fa-trash"></i></button>
-        		    				
-        		    			</td>
-        		    			
-        		    		</tr>
-        		    		<!-- 
-							<c:forEach items="${}" var="">
-            					<tr>      
-              					 	<td>${.get(i).getName()}</td>
-                					<td>${.get(i).getLastName()}</td>
-                					<td>${.get(i).getNia()}</td>
-                					<td>${.get(i).getDate()}</td>
-                					<td>
-                						<button onclick="modifyUser()"class="btn btn-square btn-primary ml-5" type="button"><i class="fas fa-edit"></i></button>
+        		    		<c:forEach items="${students}" var="s">
+        		    			<tr>
+        		    				<th>
+        		    					${s.getFirstname()}
+        		    				</th>
+        		    				<td>
+        		    					${s.getSurnames()}
+        		    				</td>
+        		    				<td>
+        		    					${s.getNIA()}
+        		    				</td>
+        		    				<td>
+        		    					${s.getBirth()}
+        		    				</td>
+        		    				<td>
+        		    			   		<button onclick="modifyUser()"class="btn btn-square btn-primary ml-5" type="button"><i class="fas fa-edit"></i></button>
         		    					<button onclick="deleteUser()"class="btn btn-square btn-danger ml-5" type="button"><i class="fas fa-trash"></i></button>
-                					</td>  
-            					</tr>
-							</c:forEach> 
-							-->
+        		    				
+        		    				</td>
+        		    			</tr>
+        		    		</c:forEach>
             			</tbody>
             		</table>
                 </div>

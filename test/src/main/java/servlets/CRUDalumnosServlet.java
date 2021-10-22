@@ -28,7 +28,7 @@ import sql.IAdminConstants;
 
 
 
-@WebServlet(urlPatterns = {"/crud.jsp" })
+
 public class CRUDalumnosServlet extends HttpServlet{
 	/**
 	 * 

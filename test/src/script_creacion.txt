@@ -1,4 +1,5 @@
 use twi_p1;
+drop table admins;
 create table admins(username varchar(100) primary key, password varchar(100), firstname varchar(100), lastname varchar(100), mail varchar(100));
 insert into admins values('ajimenez','Y9gMQe&3A?','alvaro','jimenez','ajimenez@test.com');
 insert into admins values('jalvarez','_m6A!GVqVe','javier','alvarez','jalvarez@test.com');
@@ -7,5 +8,9 @@ commit;
 
 
 use twi_p1;
-create table students(firstname varchar(40), surname1 varchar(40),surname2 varchar(40), NIA int(9) primary key, photo blob);
+drop table students;
+create table students(firstname varchar(40), surnames varchar(100), NIA int(9) primary key, birth date);
+insert into students values('Luis','Gomez Hernandez',100406002,'2000-03-20');
+insert into students values('Felipe','Herrera Fernandez',100409492,'2000-04-25');
+insert into students values('Alberto','Hernandez Bernardo',100403562,'2000-01-12');
 commit;
