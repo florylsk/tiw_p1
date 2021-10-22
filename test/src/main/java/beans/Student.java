@@ -1,21 +1,23 @@
 package beans;
 
 import java.sql.Blob;
+import java.time.LocalDate;
 
 public class Student{
 	private String firstname;
 	private String surname1;
-	private String surname2;
+	//No se si seria mejor que fuera solo 1 atributo que tuviera los dos apellidos para evitar problemas como tu caso
 	private int NIA;
-	private Blob photo;
+	private LocalDate birth;
+	private Blob photo; //lo quitaria al menos hata terminar lo obligatorio y luego si quieres lo podemos meter
 	
 	
 	
-	public Student(String firstname, String surname1, String surname2, int NIA) {
+	public Student(String firstname, String surname1,  int NIA, LocalDate birth) {
 		  this.firstname=firstname;
 		  this.surname1=surname1;
-		  this.surname2=surname2;
 		  this.NIA=NIA;
+		  this.birth=birth;
 		 }
 	
 	
@@ -33,12 +35,6 @@ public class Student{
 		this.surname1=surname1;
 	}
 	
-	public String getSurname2() {
-		return this.surname2;
-	}
-	public void setSurname2(String surname2) {
-		this.surname2=surname2;
-	}
 	
 	public int getNIA() {
 		return this.NIA;
@@ -47,6 +43,16 @@ public class Student{
 		this.NIA=NIA;
 	}
 	
+	public LocalDate getBirth() {
+		return birth;
+	}
+
+
+	public void setBirth(LocalDate birth) {
+		this.birth = birth;
+	}
+
+
 	public Blob getPhoto() {
 		return this.photo;
 	}

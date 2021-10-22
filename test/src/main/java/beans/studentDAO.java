@@ -16,8 +16,9 @@ public class studentDAO{
 			PreparedStatement ps= con.prepareStatement("insert into students(firstname,surname1,surname2,NIA) values(?,?,?,?)");
 			ps.setString(1, student.getFirstname());
 			ps.setString(2, student.getSurname1());
-			ps.setString(3, student.getSurname2());
-			ps.setInt(4, student.getNIA());
+			ps.setInt(3, student.getNIA());
+			ps.setDate(4, student.getBirth());  //formato de la fecha
+
 			status=ps.executeUpdate();
 			con.close();
 		}
@@ -35,9 +36,8 @@ public class studentDAO{
 			PreparedStatement ps=con.prepareStatement("update students set firstname=?,surname1=?,surname2=?,NIA=? where NIA=?");
 			ps.setString(1, student.getFirstname());
 			ps.setString(2, student.getSurname1());
-			ps.setString(3, student.getSurname2());
+			ps.setInt(3, student.getNIA());
 			ps.setInt(4, student.getNIA());
-			ps.setInt(5, student.getNIA());
 			status=ps.executeUpdate();
 			con.close();
 		}
@@ -76,7 +76,7 @@ public class studentDAO{
 			PreparedStatement ps=con.prepareStatement("select * from students");
 			ResultSet rs=ps.executeQuery();
 			while (rs.next()) {
-				Student s = new Student(rs.getString("firstname"),rs.getString("surname1"),rs.getString("surname2"),rs.getInt("NIA"));
+				Student s = new Student(rs.getString("firstname"),rs.getString("surname1"),rs.getInt("NIA"),rs.getLocalDate("birth")); //Formato fecha
 				students.add(s);
 			}
 			con.close();
