@@ -14,7 +14,6 @@
 
         <!-- CSS and JS-->
         <link href="${pageContext.request.contextPath}/resources/css/halfmoon-variables.min.css" rel="stylesheet" />
-        <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet" />
         <script src="${pageContext.request.contextPath}/resources/js/halfmoon.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/fa.7465cf6e1c.js"></script>
         <script type="text/javascript">

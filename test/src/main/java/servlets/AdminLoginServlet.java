@@ -20,6 +20,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import beans.Admin;
+import beans.loginDAO;
 import sql.IAdminConstants;
 
 
@@ -41,32 +43,22 @@ public class AdminLoginServlet extends HttpServlet{
 		PrintWriter pw = res.getWriter();
 		String uName = req.getParameter(IAdminConstants.COLUMN_USERNAME);
 		String pWord = req.getParameter(IAdminConstants.COLUMN_PASSWORD);
-		try {
-			Context ctx = new InitialContext();
-			DataSource ds = (DataSource) ctx.lookup("tiw_p1DS");
-			Connection con = ds.getConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM " + IAdminConstants.TABLE_ADMINS+" where username='"+uName+"' AND password='"+pWord+"'");
-			ResultSet rs = ps.executeQuery();
-			
-			if (rs.next()) {
-				String nombre=rs.getString(3);
-				String apellido=rs.getString(4);			
+		Admin admin = new Admin(uName,pWord);
+		boolean login=loginDAO.validate(admin);
+		
+
+			if (login) {	
 				HttpSession session = req.getSession();
-				session.setAttribute("nombre", nombre);
-				session.setAttribute("apellido", apellido);
+				session.setAttribute("nombre", admin.getFirstname());
+				session.setAttribute("apellido", admin.getLastname());
 				req.getRequestDispatcher("index.jsp").forward(req, res);
 				
 				
 			} else {
-
 				req.getRequestDispatcher("access.jsp").forward(req, res);
 				
 				pw.println("<div class=\"tab\">Incorrect UserName or PassWord</div>");
 			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		
 		
 	}
