@@ -108,6 +108,25 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Modal para borrar usuario -->
+             <div class="modal" id="modal-remove-student" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <h5 class="modal-title">Borrar estudiante</h5>
+                         <p>
+                            ¿Está seguro de querer eliminar al usuario
+                            <span id="course-delete-name-student"></span>?
+                        </p>
+                        <div class="text-right mt-20">
+                            <button class="btn mr-5" data-dismiss="modal" type="button">Cancelar</button>
+                            <button class="btn btn-danger" data-dismiss="modal" type="button" onclick="deleteCourse(this)">Eliminar</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
             <!-- Sticky alerts (toasts), empty container -->
             <!-- Reference: https://www.gethalfmoon.com/docs/sticky-alerts-toasts -->
             <div class="sticky-alerts"></div>
@@ -144,7 +163,7 @@
                  				<th style="width: 25%">Apellidos</th>
                  				<th style="width: 20%">Nia</th>
                  				<th style="width: 15%">Fecha Nacimiento</th>
-                 				<th style="width: 15%">Acciones</th>
+                 				<th class="text-right" style="width: 15%">Acciones</th>
               				</tr>
 		            	</thead>
         		    	<tbody>
@@ -162,9 +181,11 @@
         		    				<td>
         		    					${s.getBirth()}
         		    				</td>
-        		    				<td>
+        		    				<td class="text-right">
         		    			   		<button onclick="modifyUser()"class="btn btn-square btn-primary ml-5" type="button"><i class="fas fa-edit"></i></button>
-        		    					<button onclick="deleteUser()"class="btn btn-square btn-danger ml-5" type="button"><i class="fas fa-trash"></i></button>
+        		    					<form action="deleteStudent" method="post">
+    										<button type="submit"name="NIA" value="${s.getNIA()}"class="btn btn-square btn-danger ml-5" type="button" ><i class="fas fa-trash"></i></button>
+										</form>
         		    				
         		    				</td>
         		    			</tr>
