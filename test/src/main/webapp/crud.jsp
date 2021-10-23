@@ -100,8 +100,8 @@
                                 <input type="date" name="birth" id="create-student-birth" class="date" required="required" />
                             </div>
                             <div class="text-right mt-20">
-                            <button class="btn mr-5" data-dismiss="modal" type="button">Cancelar</button>
-                            <input class="btn btn-primary" type="submit" value="Añadir estudiante">
+                            	<a class="btn mr-5" href="/test/crud.jsp"  type="button">Cancelar</a>
+                            	<input class="btn btn-primary" type="submit" value="Añadir estudiante">
                       	    </div>
                         </form>
                         
@@ -134,7 +134,7 @@
                                 <input type="date" name="birth" id="update-student-birth" class="date" required="required" />
                             </div>
                             <div class="text-right mt-20">
-                            <button class="btn mr-5" data-dismiss="modal" type="button">Cancelar</button>
+                            <a class="btn mr-5" href="/test/crud.jsp" type="button">Cancelar</a>
                             <input class="btn btn-primary" type="submit" value="Modificar estudiante">
                       	    </div>
                         </form>
@@ -142,6 +142,17 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Modal para buscar usuario -->
+            <div class="modal" id="modal-search-student" tabindex="-1" role="dialog">
+            	<div class="modal-dialog" role="document">
+            		<div class="modal-content">
+            			<h5 class="modal-title">Usuario buscado</h5>
+            			
+            		</div>
+            	</div>
+            </div>
+            
             
             <!-- Sticky alerts (toasts), empty container -->
             <!-- Reference: https://www.gethalfmoon.com/docs/sticky-alerts-toasts -->
@@ -158,7 +169,7 @@
                 </div>
                 
                 <div class="w-400 m-auto my-20">
-                	<form action="..." class="form-inline">
+                	<form action="#modal-search-student" class="form-inline" method="post" >
  
    							<input type="text" class="form-control " id="Nia" placeholder="Nia" required="required">
  							<input  type="submit" class="btn btn-primary "value="Buscar usuario">				
@@ -179,7 +190,7 @@
                  				<th style="width: 25%">Apellidos</th>
                  				<th style="width: 20%">Nia</th>
                  				<th style="width: 15%">Fecha Nacimiento</th>
-                 				<th class="text-right" style="width: 15%">Acciones</th>
+                 				<th style="width: 15%">Acciones</th>
               				</tr>
 		            	</thead>
         		    	<tbody>
@@ -197,7 +208,7 @@
         		    				<td>
         		    					${s.getBirth()}
         		    				</td>
-        		    				<td class="text-right">
+        		    				<td class="form-inline-sm ">
         		    			   		<a href="#modal-update-student" class="btn btn-square btn-primary ml-5" role="button"><i class="fas fa-edit"></i></a>
         		    					<form action="deleteStudent" method="post">
     										<button type="submit"name="NIA" value="${s.getNIA()}"class="btn btn-square btn-danger ml-5" type="button" ><i class="fas fa-trash"></i></button>
