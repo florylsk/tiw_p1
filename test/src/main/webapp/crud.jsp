@@ -97,7 +97,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="create-student-birth" class="required">Fecha de nacimiento</label>
-                                <input type="date" name="birth" id="create-student-birth" class="date" required="required" />
+                                <input type="date" name="birth" id="create-student-birth" class="form-control" required="required" />
                             </div>
                             <div class="text-center mt-20">
                             	<a class="btn mr-5" href="/test/crud.jsp"  type="button">Cancelar</a>
@@ -128,7 +128,7 @@
                 <div class="w-400 m-auto my-20">
                 	<form action="#modal-search-student" class="form-inline" method="post" >
  
-   							<input type="text" id="searchInput" class="form-control" onkeyup="searchFunction()" placeholder="Busqueda por NIA" title="Escribe un NIA">		
+   							<input type="text" id="searchInput" class="form-control" onkeyup="searchFunction()" placeholder="Búsqueda por NIA" title="Escribe un NIA">		
  						
                 	</form>
                 </div>
@@ -184,7 +184,7 @@
 						                            </div>
 						                            <div class="form-group text-left">
 						                                <label for="update-student-birth" class="required">Fecha de nacimiento</label>
-						                                <input type="date" name="birth" id="update-student-birth" class="date" required="required"/>
+						                                <input type="date" name="birth" id="update-student-birth" class="form-control" required="required"/>
 						                            </div>
 						                            <div class="text-center mt-20">
 						                            <a class="btn mr-5" href="/test/crud.jsp" type="button">Cancelar</a>
