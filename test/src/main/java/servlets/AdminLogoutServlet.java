@@ -47,7 +47,7 @@ public class AdminLogoutServlet extends HttpServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
     	HttpSession session = req.getSession();
-		session.invalidate();
+		
 		try {
 		InitialContext ctx=new InitialContext();  
         QueueConnectionFactory f=(QueueConnectionFactory)ctx.lookup("myQueueConnectionFactory");  
@@ -74,6 +74,7 @@ public class AdminLogoutServlet extends HttpServlet{
           
         //8) connection close  
         con.close();
+        session.invalidate();
 		}catch
 			(Exception e){System.out.println(e);
 		}

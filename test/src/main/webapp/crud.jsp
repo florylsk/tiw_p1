@@ -179,7 +179,7 @@
                  				<th style="width: 25%">Apellidos</th>
                  				<th style="width: 20%">Nia</th>
                  				<th style="width: 15%">Fecha Nacimiento</th>
-                 				<th style="width: 15%">Acciones</th>
+                 				<th class="text-right" style="width: 15%">Acciones</th>
               				</tr>
 		            	</thead>
         		    	<tbody>
@@ -197,12 +197,27 @@
         		    				<td>
         		    					${s.getBirth()}
         		    				</td>
-        		    				<td class="form-inline-sm ">
+        		    				<td class="text-right">
         		    			   		<a href="#modal-update-student" class="btn btn-square btn-primary ml-5" role="button"><i class="fas fa-edit"></i></a>
-        		    					<form action="deleteStudent" method="post">
-    										<button type="submit"name="NIA" value="${s.getNIA()}"class="btn btn-square btn-danger ml-5" type="button" ><i class="fas fa-trash"></i></button>
-										</form>
-        		    				
+    									<a href="#modal-delete-student-${s.getNIA()}" class="btn btn-square btn-danger ml-5" role="button"><i class="fas fa-trash"></i></a>	  
+    									  				
+        		    				            <div class="modal" id="modal-delete-student-${s.getNIA()}" tabindex="-1" role="dialog">
+               									 <div class="modal-dialog" role="document">
+                   									 <div class="modal-content">
+                    								    <h5 class="modal-title text-center">¿Borrar estudiante?</h5>
+                     								    <p class="text-left">
+                          							  ¿Está seguro de querer borrar al estudiante ${s.getFirstname()} ${s.getSurnames()}?
+                        								</p>
+                     								   <div class="text-center">
+                           							  <form action="deleteStudent" method="post">
+    													<button type="submit"name="NIA" value="${s.getNIA()}"class="btn btn-danger" type="button" >Borrar Usuario</button>
+														</form>
+                            
+                       								 </div>
+                   							 		</div>
+               									 </div>
+           									 </div>
+           								 		
         		    				</td>
         		    			</tr>
         		    		</c:forEach>
