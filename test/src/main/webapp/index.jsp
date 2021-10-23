@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width" />
 
         <!-- Title -->
-        <title>Iniciar Sesión - AulaMaster</title>
+        <title>Home - AulaMaster</title>
 
         <!-- CSS and JS-->
         <link href="${pageContext.request.contextPath}/resources/css/halfmoon-variables.min.css" rel="stylesheet" />
