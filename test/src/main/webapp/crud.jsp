@@ -81,7 +81,7 @@
              <div class="modal" id="modal-add-student" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                        <h5 class="modal-title">Añadir estudiante</h5>
+                        <h5 class="modal-title text-center">Añadir estudiante</h5>
                         <form id="add-student" action="addStudent" method="post">
                             <div class="form-group">
                                 <label for="create-student-firstname" class="required">Nombre</label>
@@ -99,7 +99,7 @@
                                 <label for="create-student-birth" class="required">Fecha de nacimiento</label>
                                 <input type="date" name="birth" id="create-student-birth" class="date" required="required" />
                             </div>
-                            <div class="text-right mt-20">
+                            <div class="text-center mt-20">
                             	<a class="btn mr-5" href="/test/crud.jsp"  type="button">Cancelar</a>
                             	<input class="btn btn-primary" type="submit" value="Añadir estudiante">
                       	    </div>
