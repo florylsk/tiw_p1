@@ -93,7 +93,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="create-student-NIA" class="required">NIA</label>
-                                <input type="number" name="NIA" id="create-student-NIA" class="form-control" required="required" />
+                                <input type="text" name="NIA" id="create-student-NIA" class="form-control" required="required" pattern="^100[0-9]{6}$" />
                             </div>
                             <div class="form-group">
                                 <label for="create-student-birth" class="required">Fecha de nacimiento</label>
@@ -119,7 +119,7 @@
                         <form id="add-student" action="updateStudent" method="post">
                         	<div class="form-group">
                                 <label for="update-student-NIA" class="required">NIA del alumno a modificar</label>
-                                <input type="number" name="NIA" id="update-student-NIA" class="form-control" required="required" />
+                                <input type="text" name="NIA" id="update-student-NIA" class="form-control" required="required" pattern="^100[0-9]{6}$"/>
                             </div>
                             <div class="form-group">
                                 <label for="update-student-firstname" class="required">Nombre</label>
