@@ -109,39 +109,6 @@
                 </div>
             </div>
             
-            <!-- Modal para modificar usuario -->
-             <div class="modal" id="modal-update-student" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <h5 class="modal-title">Modificar estudiante</h5>
-                        <h6 class="modal-text">(No puede modificar el NIA)</h6>
-                        
-                        <form id="add-student" action="updateStudent" method="post">
-                        	<div class="form-group">
-                                <label for="update-student-NIA" class="required">NIA del alumno a modificar</label>
-                                <input type="text" name="NIA" id="update-student-NIA" class="form-control" required="required" pattern="^100[0-9]{6}$"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="update-student-firstname" class="required">Nombre</label>
-                                <input type="text" name="firstname" id="update-student-firstname" class="form-control" required="required" />
-                            </div>
-                            <div class="form-group">
-                                <label for="update-student-surnames" class="required">Apellidos</label>
-                                <input type="text" name="surnames" id="update-student-surnames" class="form-control" required="required" />
-                            </div>
-                            <div class="form-group">
-                                <label for="update-student-birth" class="required">Fecha de nacimiento</label>
-                                <input type="date" name="birth" id="update-student-birth" class="date" required="required" />
-                            </div>
-                            <div class="text-right mt-20">
-                            <a class="btn mr-5" href="/test/crud.jsp" type="button">Cancelar</a>
-                            <input class="btn btn-primary" type="submit" value="Modificar estudiante">
-                      	    </div>
-                        </form>
-                        
-                    </div>
-                </div>
-            </div>
             
             
             <!-- Sticky alerts (toasts), empty container -->
@@ -198,13 +165,44 @@
         		    					${s.getBirth()}
         		    				</td>
         		    				<td class="text-right">
-        		    			   		<a href="#modal-update-student" class="btn btn-square btn-primary ml-5" role="button"><i class="fas fa-edit"></i></a>
+        		    			   		<a href="#modal-update-student-${s.getNIA()}" class="btn btn-square btn-primary ml-5" role="button"><i class="fas fa-edit"></i></a>
+        		    			   		
+        		    			   		<div class="modal" id="modal-update-student-${s.getNIA()}" tabindex="-1" role="dialog">
+              							  <div class="modal-dialog" role="document">
+                   							 <div class="modal-content">
+                     						   <h5 class="modal-title text-center">Modificar estudiante</h5>
+                       						   <h6 class="modal-text text-left">NIA del estudiante: ${s.getNIA()}</h6>
+						                        <form id="add-student" action="updateStudent" method="post">
+						                             <input type="hidden" id="update-student-NIA" name="NIA" value="${s.getNIA()}">
+						                            <div class="form-group text-left">
+						                                <label for="update-student-firstname" class="required">Nombre</label>
+						                                <input type="text" name="firstname" id="update-student-firstname" class="form-control" required="required" placeholder="${s.getFirstname()}" />
+						                            </div>
+						                            <div class="form-group text-left">
+						                                <label for="update-student-surnames" class="required">Apellidos</label>
+						                                <input type="text" name="surnames" id="update-student-surnames" class="form-control" required="required" placeholder="${s.getSurnames()}" />
+						                            </div>
+						                            <div class="form-group text-left">
+						                                <label for="update-student-birth" class="required">Fecha de nacimiento</label>
+						                                <input type="date" name="birth" id="update-student-birth" class="date" required="required"/>
+						                            </div>
+						                            <div class="text-center mt-20">
+						                            <a class="btn mr-5" href="/test/crud.jsp" type="button">Cancelar</a>
+						                            <input class="btn btn-primary" type="submit" value="Modificar estudiante">
+						                      	    </div>
+						                        </form>
+                        
+								                    </div>
+								                </div>
+								            </div>
+            
+            
     									<a href="#modal-delete-student-${s.getNIA()}" class="btn btn-square btn-danger ml-5" role="button"><i class="fas fa-trash"></i></a>	  
     									  				
         		    				            <div class="modal" id="modal-delete-student-${s.getNIA()}" tabindex="-1" role="dialog">
                									 <div class="modal-dialog" role="document">
                    									 <div class="modal-content">
-                    								    <h5 class="modal-title text-center">¿Borrar estudiante?</h5>
+                    								    <h5 class="modal-title text-center">Borrar estudiante</h5>
                      								    <p class="text-left">
                           							  ¿Está seguro de querer borrar al estudiante ${s.getFirstname()} ${s.getSurnames()}?
                         								</p>
