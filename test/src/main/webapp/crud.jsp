@@ -146,7 +146,7 @@
                  				<th style="width: 25%">Apellidos</th>
                  				<th style="width: 20%">Nia</th>
                  				<th style="width: 15%">Fecha Nacimiento</th>
-                 				<th class="text-right" style="width: 15%">Acciones</th>
+                 				<th class="text" style="width: 15%">Acciones</th>
               				</tr>
 		            	</thead>
         		    	<tbody>
@@ -164,8 +164,8 @@
         		    				<td>
         		    					${s.getBirth()}
         		    				</td>
-        		    				<td class="text-right">
-        		    			   		<a href="#modal-update-student-${s.getNIA()}" class="btn btn-square btn-primary ml-5" role="button"><i class="fas fa-edit"></i></a>
+        		    				<td class="text">
+        		    			   		<a href="#modal-update-student-${s.getNIA()}" class="btn btn-square btn-primary ml-5" role="button" data-toggle="tooltip" data-title="Actualizar Estudiante" data-placement="left"><i class="fas fa-edit"></i></a>
         		    			   		
         		    			   		<div class="modal" id="modal-update-student-${s.getNIA()}" tabindex="-1" role="dialog">
               							  <div class="modal-dialog" role="document">
@@ -197,7 +197,7 @@
 								            </div>
             
             
-    									<a href="#modal-delete-student-${s.getNIA()}" class="btn btn-square btn-danger ml-5" role="button"><i class="fas fa-trash"></i></a>	  
+    									<a href="#modal-delete-student-${s.getNIA()}" class="btn btn-square btn-danger ml-5" role="button" data-toggle="tooltip" data-title="Borrar estudiante" data-placement="right"><i class="fas fa-trash"></i></a>	  
     									  				
         		    				            <div class="modal" id="modal-delete-student-${s.getNIA()}" tabindex="-1" role="dialog">
                									 <div class="modal-dialog" role="document">
