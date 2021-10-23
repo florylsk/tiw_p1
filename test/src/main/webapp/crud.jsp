@@ -143,16 +143,6 @@
                 </div>
             </div>
             
-            <!-- Modal para buscar usuario -->
-            <div class="modal" id="modal-search-student" tabindex="-1" role="dialog">
-            	<div class="modal-dialog" role="document">
-            		<div class="modal-content">
-            			<h5 class="modal-title">Usuario buscado</h5>
-            			
-            		</div>
-            	</div>
-            </div>
-            
             
             <!-- Sticky alerts (toasts), empty container -->
             <!-- Reference: https://www.gethalfmoon.com/docs/sticky-alerts-toasts -->
@@ -171,7 +161,7 @@
                 <div class="w-400 m-auto my-20">
                 	<form action="#modal-search-student" class="form-inline" method="post" >
  
-   							<input type="text" id="searchInput" class="form-control" onkeyup="searchFunction()" placeholder="NIA" title="Escribe un NIA">		
+   							<input type="text" id="searchInput" class="form-control" onkeyup="searchFunction()" placeholder="Busqueda por NIA" title="Escribe un NIA">		
  						
                 	</form>
                 </div>

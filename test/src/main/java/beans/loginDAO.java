@@ -22,7 +22,6 @@ public class loginDAO{
 			if (status) {
 				admin.setFirstname(rs.getString(3));
 				admin.setLastname(rs.getString(4));
-				admin.setMail(rs.getString(5));
 			}
 		}
 		

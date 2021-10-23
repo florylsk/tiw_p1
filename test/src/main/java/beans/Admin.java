@@ -1,12 +1,15 @@
 package beans;
 
+import java.util.Date;
 
 public class Admin{
 	private String username;
 	private String password;
 	private String firstname;
 	private String lastname;
-	private String mail;
+	private Date startTime;
+	private Date endTime;
+
 	
 	
 	
@@ -48,14 +51,27 @@ public class Admin{
 	public void setLastname(String lastname) {
 		this.lastname=lastname;
 	}
-	
-	public String getMail() {
-		return this.mail;	
+
+
+	public Date getStartTime() {
+		return startTime;
 	}
-	
-	public void setMail(String mail) {
-		this.mail=mail;
+
+
+	public void setStartTime(Date startTime) {
+		this.startTime = startTime;
 	}
+
+
+	public Date getEndTime() {
+		return endTime;
+	}
+
+
+	public void setEndTime(Date endTime) {
+		this.endTime = endTime;
+	}
+
 	
 
 	
