@@ -171,8 +171,7 @@
                 <div class="w-400 m-auto my-20">
                 	<form action="#modal-search-student" class="form-inline" method="post" >
  
-   							<input type="text" class="form-control " id="Nia" placeholder="Nia" required="required">
- 							<input  type="submit" class="btn btn-primary "value="Buscar usuario">				
+   							<input type="text" id="searchInput" class="form-control" onkeyup="searchFunction()" placeholder="NIA" title="Escribe un NIA">		
  						
                 	</form>
                 </div>
@@ -183,7 +182,7 @@
 				%>  
                 <!-- Courses and management will be shown here -->
                 <div id="admin-courses">
-                	<table class="table table-striped">
+                	<table class="table table-striped" id="estudiantes">
             			<thead>
               				<tr>
                  				<th style="width: 25%">Nombre</th>
@@ -220,6 +219,7 @@
         		    		
             			</tbody>
             			
+            			
             		</table>
             		<div class="divider mt-0 mb-5 border-bottom"></div>
                 </div>
@@ -245,7 +245,26 @@
 
 		</div>
 
-	
+					<script>
+							function searchFunction() {
+ 							 var input, filter, table, tr, td, i, txtValue;
+ 							 input = document.getElementById("searchInput");
+ 							 filter = input.value.toUpperCase();
+  							table = document.getElementById("estudiantes");
+  							tr = table.getElementsByTagName("tr");
+ 							 for (i = 0; i < tr.length; i++) {
+   								 td = tr[i].getElementsByTagName("td")[1];
+   								 if (td) {
+      								txtValue = td.textContent || td.innerText;
+      								if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        							tr[i].style.display = "";
+      								} else {
+       									 tr[i].style.display = "none";
+     								 }
+   								 }       
+ 							 }
+							}
+					</script>
 
 
 	</body>

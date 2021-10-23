@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.jsp.JspWriter;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
@@ -48,11 +49,8 @@ public class DeleteStudentServlet extends HttpServlet{
 		String _NIA= req.getParameter(IStudentConstants.COLUMN_NIA);
 		int NIA=Integer.parseInt(_NIA);
 		Student s = studentDAO.getStudentByNIA(NIA);
-		int status = studentDAO.deleteStudent(s);
+		int status = studentDAO.deleteStudent(s);	
 		req.getRequestDispatcher("crud.jsp").forward(req, res);
-		
-		
-		
 	}
 	
 	
