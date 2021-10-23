@@ -100,7 +100,7 @@
                                 <input type="date" name="birth" id="create-student-birth" class="form-control" required="required" />
                             </div>
                             <div class="text-center mt-20">
-                            	<a class="btn mr-5" href="/test/crud.jsp"  type="button">Cancelar</a>
+                            	<a class="btn mr-5" href="#"  type="button">Cancelar</a>
                             	<input class="btn btn-primary" type="submit" value="Añadir estudiante">
                       	    </div>
                         </form>
@@ -187,7 +187,7 @@
 						                                <input type="date" name="birth" id="update-student-birth" class="form-control" required="required"/>
 						                            </div>
 						                            <div class="text-center mt-20">
-						                            <a class="btn mr-5" href="/test/crud.jsp" type="button">Cancelar</a>
+						                            <a class="btn mr-5" href="#" type="button">Cancelar</a>
 						                            <input class="btn btn-primary" type="submit" value="Modificar estudiante">
 						                      	    </div>
 						                        </form>
@@ -208,6 +208,7 @@
                         								</p>
                      								   <div class="text-center">
                            							  <form action="deleteStudent" method="post">
+                           							  	<a class="btn mr-5" href="#"  type="button">Cancelar</a>
     													<button type="submit"name="NIA" value="${s.getNIA()}"class="btn btn-danger" type="button" >Borrar Usuario</button>
 														</form>
                             
