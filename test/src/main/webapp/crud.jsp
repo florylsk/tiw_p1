@@ -117,6 +117,10 @@
                         <h6 class="modal-text">(No puede modificar el NIA)</h6>
                         
                         <form id="add-student" action="updateStudent" method="post">
+                        	<div class="form-group">
+                                <label for="update-student-NIA" class="required">NIA del alumno a modificar</label>
+                                <input type="number" name="NIA" id="update-student-NIA" class="form-control" required="required" />
+                            </div>
                             <div class="form-group">
                                 <label for="update-student-firstname" class="required">Nombre</label>
                                 <input type="text" name="firstname" id="update-student-firstname" class="form-control" required="required" />
@@ -124,10 +128,6 @@
                             <div class="form-group">
                                 <label for="update-student-surnames" class="required">Apellidos</label>
                                 <input type="text" name="surnames" id="update-student-surnames" class="form-control" required="required" />
-                            </div>
-                            <div class="form-group">
-                                <label for="update-student-NIA" class="required">NIA</label>
-                                <input type="number" name="NIA" id="update-student-NIA" class="form-control" required="required" />
                             </div>
                             <div class="form-group">
                                 <label for="update-student-birth" class="required">Fecha de nacimiento</label>
