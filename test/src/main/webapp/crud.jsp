@@ -209,7 +209,7 @@
                      								   <div class="text-center">
                            							  <form action="deleteStudent" method="post">
                            							  	<a class="btn mr-5" href="#"  type="button">Cancelar</a>
-    													<button type="submit"name="NIA" value="${s.getNIA()}"class="btn btn-danger" type="button" >Borrar Usuario</button>
+    													<button type="submit"name="NIA" value="${s.getNIA()}"class="btn btn-danger" type="button" >Borrar Estudiante</button>
 														</form>
                             
                        								 </div>
