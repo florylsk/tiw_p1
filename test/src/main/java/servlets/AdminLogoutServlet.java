@@ -10,7 +10,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
+import java.sql.Timestamp;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -62,13 +62,12 @@ public class AdminLogoutServlet extends HttpServlet{
         //5) create TextMessage object  
         TextMessage msg=ses.createTextMessage(); 
 		//6) write message 
-        
+        String username = (String) session.getAttribute("username");
         String name=(String) session.getAttribute("nombre");
         String lastName=(String) session.getAttribute("apellido");
-        Date inicio = new Date(session.getCreationTime());
-        Date fin = new Date(System.currentTimeMillis());
-        DateFormat dtf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        msg.setText(name+" "+lastName+" "+dtf.format(inicio)+" "+ dtf.format(fin) );
+        Timestamp inicio = new Timestamp(session.getCreationTime());
+        Timestamp fin = new Timestamp(System.currentTimeMillis());
+        msg.setText(username+";"+name+";"+lastName+";"+inicio+";"+ fin);
         //7) send message  
         sender.send(msg);  
           

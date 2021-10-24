@@ -45,6 +45,7 @@ public class AdminLoginServlet extends HttpServlet{
 				HttpSession session = req.getSession();
 				session.setAttribute("nombre", admin.getFirstname());
 				session.setAttribute("apellido", admin.getLastname());
+				session.setAttribute("username", admin.getUsername());
 				req.getRequestDispatcher("index.jsp").forward(req, res);
 				
 				
