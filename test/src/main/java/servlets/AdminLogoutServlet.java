@@ -10,7 +10,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -49,10 +49,10 @@ public class AdminLogoutServlet extends HttpServlet{
     	HttpSession session = req.getSession();
 		
 		try {
-		InitialContext ctx=new InitialContext();  
-        QueueConnectionFactory f=(QueueConnectionFactory)ctx.lookup("myQueueConnectionFactory");  
-        QueueConnection con=f.createQueueConnection();  
-        con.start();  
+		 InitialContext ctx=new InitialContext();  
+	      QueueConnectionFactory f=(QueueConnectionFactory)ctx.lookup("myQueueConnectionFactory");  
+	     QueueConnection con=f.createQueueConnection();  
+	     con.start(); 
         //2) create queue session  
         QueueSession ses=con.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);  
         //3) get the Queue object  
@@ -65,12 +65,14 @@ public class AdminLogoutServlet extends HttpServlet{
         String username = (String) session.getAttribute("username");
         String name=(String) session.getAttribute("nombre");
         String lastName=(String) session.getAttribute("apellido");
-        Timestamp inicio = new Timestamp(session.getCreationTime());
-        Timestamp fin = new Timestamp(System.currentTimeMillis());
-        msg.setText(username+";"+name+";"+lastName+";"+inicio+";"+ fin);
+        Date _inicio = new Date(session.getCreationTime());
+        Date _fin = new Date(System.currentTimeMillis());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String inicio = sdf.format(_inicio);
+        String fin = sdf.format(_fin);      
+        msg.setText(username+";"+name+";"+lastName+";"+inicio+";"+ fin+";");
         //7) send message  
         sender.send(msg);  
-          
         //8) connection close  
         con.close();
         session.invalidate();

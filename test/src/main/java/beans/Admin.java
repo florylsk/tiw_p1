@@ -7,8 +7,6 @@ public class Admin{
 	private String password;
 	private String firstname;
 	private String lastname;
-	private Date startTime;
-	private Date endTime;
 
 	
 	
@@ -52,25 +50,6 @@ public class Admin{
 		this.lastname=lastname;
 	}
 
-
-	public Date getStartTime() {
-		return startTime;
-	}
-
-
-	public void setStartTime(Date startTime) {
-		this.startTime = startTime;
-	}
-
-
-	public Date getEndTime() {
-		return endTime;
-	}
-
-
-	public void setEndTime(Date endTime) {
-		this.endTime = endTime;
-	}
 
 	
 
