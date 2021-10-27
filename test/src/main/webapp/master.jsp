@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width" />
 
         <!-- Title -->
-        <title>Iniciar Sesión - AulaMaster</title>
+        <title>Gestión de Masters - AulaMaster</title>
 
         <!-- CSS and JS-->
         <link href="${pageContext.request.contextPath}/resources/css/halfmoon-variables.min.css" rel="stylesheet" />
@@ -19,7 +19,8 @@
 
 </head>
 <body class="with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true" data-set-preferred-mode-onload="true">
-
+	<%@page import="beans.*,java.util.*,entities.*"%>  
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
 	<div class="page-wrapper with-navbar" data-sidebar-type="overlayed-sm-and-down">
 	
 
@@ -78,9 +79,150 @@
             <!-- Sticky alerts (toasts), empty container -->
             <!-- Reference: https://www.gethalfmoon.com/docs/sticky-alerts-toasts -->
             <div class="sticky-alerts"></div>
+            
+            
+            
+            
+            
+            
+            <div class="content-wrapper ">
+            
+                
+                <%  
+					List<Student> students=studentDAO.getAllStudents();
+					List<Master> masters = masterDAO.getAllMasters();
+					request.setAttribute("students",students);  
+					request.setAttribute("masters",masters);
+				%>  
+                <!-- Courses and management will be shown here -->
+                <div class="w-400 m-auto my-20">
+                	<form action="#modal-search-student" class="form-inline" method="post" >
+ 
+   							<input type="text" id="searchInput" class="form-control" onkeyup="searchFunction()" placeholder="Búsqueda por NIA" title="Escribe un NIA">		
+ 						
+                	</form>
+                </div>
+                
+                <div id="masters">
+                <c:forEach items="${masters}" var="m">
+                	<div class="container-fluid mb-20">
+                		<div class="row vertical-center">
+                			<h4 class="col-8 mb-10 pl-15">${m.getNombre()}</h4>
+                			<div class="col-4 text-right pr-15">
+                			<a href="#modal-assign-student-${m.getId()}" class="btn mr-5" role="button"><i class="fas fa-user-plus"></i></a>
+                			</div>
+                		</div>
+                		<table class="table table-striped">
+                			<thead>
+              				<tr>
+                 				<th style="width: 25%">Nombre</th>
+                 				<th style="width: 25%">Apellidos</th>
+                 				<th style="width: 20%">NIA</th>
+                 				<th style="width: 15%">Fecha Nacimiento</th>
+                 				<th class="text" style="width: 15%">Acciones</th>
+              				</tr>
+		            		</thead>
+		            		<tbody>
+	                			
+	                		
+                				<!-- #TODO generar los alumnos leyendo las subscripciones -->
+                	
+                	
+                	
+                	
+                	
+                
+                
+                
+                
+                
+                			</tbody>
+                		</table>
+               		 </div>
+                </c:forEach>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                </div>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 
           
-
+	<nav class="navbar navbar-fixed-bottom">
+                	<div class="container-fluid">
+                   	 <ul class="navbar-nav ml-auto">
+                      	  <li class="nav-item">
+                        	    <a href="#" class="nav-link">Política de privacidad</a>
+                      	  </li>
+                  	  </ul>
+                  	  <span class="navbar-text"> &copy; AulaMaster </span>
+               	 </div>
+			</nav>
 
 
 
