@@ -1,6 +1,5 @@
 package beans;
 
-import java.util.Date;
 
 public class Admin{
 	private String username;
