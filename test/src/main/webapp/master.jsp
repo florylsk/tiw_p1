@@ -19,7 +19,7 @@
 
 </head>
 <body class="with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true" data-set-preferred-mode-onload="true">
-	<%@page import="beans.*,java.util.*,entities.*"%>  
+	<%@page import="beans.*,java.util.*,entities.*,javax.persistence.*"%>  
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
 	<div class="page-wrapper with-navbar" data-sidebar-type="overlayed-sm-and-down">
 	
@@ -89,10 +89,11 @@
             
                 
                 <%  
-					List<Student> students=studentDAO.getAllStudents();
 					List<Master> masters = masterDAO.getAllMasters();
-					request.setAttribute("students",students);  
 					request.setAttribute("masters",masters);
+					EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "tiw_JPA" );
+				    EntityManager entitymanager = emfactory.createEntityManager();
+					
 				%>  
                 <!-- Courses and management will be shown here -->
                 <div class="w-400 m-auto my-20">
@@ -105,6 +106,9 @@
                 
                 <div id="masters">
                 <c:forEach items="${masters}" var="m">
+                	
+
+			                 
                 	<div class="container-fluid mb-20">
                 		<div class="row vertical-center">
                 			<h4 class="col-8 mb-10 pl-15">${m.getNombre()}</h4>
@@ -123,9 +127,41 @@
               				</tr>
 		            		</thead>
 		            		<tbody>
-	                			
-	                		
-                				<!-- #TODO generar los alumnos leyendo las subscripciones -->
+	                				<%  
+	                				Query query = entitymanager.createQuery( "Select s " + "from Subscription s " + "where s.master=1");
+	                		      	List<Subscription> subscripciones=query.getResultList();
+	                		      	List<Student> students = new ArrayList<Student>();
+	                		      	for (Subscription sub : subscripciones){
+	                		      		Student stu = studentDAO.getStudentByNIA(sub.getStudentID());
+	                		      		students.add(stu);     		      		
+	                		      	}
+	                		      	request.setAttribute("estudiantes",students);
+	                		      	
+									%> 
+	                				<c:forEach items="${estudiantes}" var="est">
+	                					<tr>
+        		    				<th>
+        		    					${est.getFirstname()}
+        		    				</th>
+        		    				<td>
+        		    					${est.getSurnames()}
+        		    				</td>
+        		    				<td>
+        		    					${est.getNIA()}
+        		    				</td>
+        		    				<td>
+        		    					${est.getBirth()}
+        		    				</td>
+        		    				<td class="text">
+        		    			   		<a href="#modal-unnasign-student-${m.getId()}-${est.getNIA()}" class="btn btn-square btn-primary ml-5" role="button"><i class="fas fa-edit"></i></a>
+	                				
+	                				
+	                				</td>
+	                				</tr>
+	                				
+	                				
+	                				</c:forEach>
+                				
                 	
                 	
                 	

@@ -33,7 +33,7 @@
                 </a>
                 <ul class="navbar-nav d-none d-md-flex"> <!-- d-none = display: none, d-md-flex = display: flex on medium screens and up (width > 768px) -->
           			<li class="nav-item active">
-           				 <a href="home.jsp" class="nav-link">Home</a>
+           				 <a href="index.jsp" class="nav-link">Home</a>
        			   </li>
         			  <li class="nav-item">
          			  <a href="crud.jsp" class="nav-link">CRUD</a>

@@ -16,6 +16,10 @@ insert into students values('Alberto','Hernandez Bernardo',100403562,'2000-01-12
 commit;
 
 use twi_p1;
+drop table if exists records;
+create table records(username varchar(100),firstname varchar(40),lastname varchar(40),fecha_inicio datetime,fecha_salida datetime);
+
+use twi_p1;
 drop table if exists masters;
 create table masters(id int(5) primary key,nombre varchar(100), escuela varchar(40), descripcion varchar(1000), curso varchar(9));
 insert into masters values(1,'Máster Universitario en Ciberseguridad','Escuela politécnica superior','El Máster en Ciberseguridad, ofrece un programa de marcado carácter técnico y práctico (claramente diferenciado de los másteres en seguridad de la información enfocados también a los aspectos organizativos, administrativos y legales), y en su desarrollo se aplica una metodología didáctica basada en clases presenciales, seminarios especializados, conferencias, estudio de casos prácticos, sesiones prácticas en laboratorios informáticos, tutorías, estudio y auto-aprendizaje.','2021-2022');
@@ -29,3 +33,9 @@ insert into masters values(8,'Máster Universitario en Estadística para la Cienci
 insert into masters values(9,'Máster Universitario en Tecnologías del Sector Financiero: Fintech','Escuela politénica superior','El objetivo del Máster Universitario en Tecnologías del Sector Financiero: FinTech (anteriormente denominado Máster Universitario en Tecnologías de la Computación Aplicadas al Sector Financiero) es generar profesionales con un perfil multidisciplinar, que combinen sus conocimientos en tecnologías de la información con un perfil financiero. Así, en este Máster los estudiantes reciben formación en aspectos tecnológicos, pero también en áreas esenciales sobre los mercados financieros y el mundo FinTech.','2024-2025');
 insert into masters values(10,'Máster Universitario en Mecánica Industrial','Escuela politénica superior','El objetivo principal del programa de Máster Universitario en Mecánica Industrial es proporcionar una formación académica avanzada en el ámbito de la mecánica especializada que demanda la industria. Los profesionales con formación superior en este máster integrarán de forma transversal conocimientos para la aplicación de las nuevas tecnologías en disciplinas tales como la mecánica de máquinas, la mecánica de estructuras, la mecánica de fluidos y la ingeniería térmica.','2022-2023');
 commit;
+
+
+use twi_p1;
+drop table if exists subscriptions;
+create table subscriptions (id int(9), studentID int(9) ,masterID int(5) , constraint student_fk foreign key(studentID) references students(NIA), constraint master_pk foreign key(masterID) references masters(id));
+insert into subscriptions values(1,100425962,1)
