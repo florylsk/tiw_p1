@@ -1,37 +1,66 @@
 package entities;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
-import beans.*;
 
 @Table(name="subscriptions")
-@Entity(name="sub")
-public class Subscription{
+@Entity(name="subscription")
+public class Subscription implements Serializable{
+	 
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-	@Column(name = "id")
-	private int subID;
+	@GeneratedValue( strategy = GenerationType.IDENTITY )
+	private int id;
 	
-	@Column(name="studentID")
-	private int estudiante;
+	@JoinColumn(name="student")
+	private Student student;
 	
-	@Column(name="masterID")
-	private int master;
+	@JoinColumn(name="master")
+	private Master master;
 	
-	
-	
-	public int getStudentID() {
-		return this.estudiante;
+	public Subscription () {
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
+	public Master getMaster() {
+		return master;
+	}
+
+	public void setMaster(Master master) {
+		this.master = master;
 	}
 	
-	public void setStudentID(int estudiante) {
-		this.estudiante=estudiante;
-	}
 	
-	public int getMasterID() {
-		return this.master;
-	}
-	public void setMasterID(int master) {
-		this.master=master;
-	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

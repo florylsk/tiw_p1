@@ -19,7 +19,7 @@
 
 </head>
 <body class="with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true" data-set-preferred-mode-onload="true">
-	<%@page import="beans.*,java.util.*,entities.*,javax.persistence.*"%>  
+	<%@page import="java.util.*,entities.*,javax.persistence.*"%>  
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
 	<div class="page-wrapper with-navbar" data-sidebar-type="overlayed-sm-and-down">
 	
@@ -89,17 +89,26 @@
             
                 
                 <%  
-					List<Master> masters = masterDAO.getAllMasters();
-					request.setAttribute("masters",masters);
+					
 					EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "tiw_JPA" );
 				    EntityManager entitymanager = emfactory.createEntityManager();
-					
+				    Query query = entitymanager.createQuery( "Select m from master m");
+				    List<Master> masters =query.getResultList();
+				    request.setAttribute("masters",masters);
+				    
+				  
+				    int contadorID=0;
 				%>  
                 <!-- Courses and management will be shown here -->
                 <div class="w-400 m-auto my-20">
                 	<form action="#modal-search-student" class="form-inline" method="post" >
  
-   							<input type="text" id="searchInput" class="form-control" onkeyup="searchFunction()" placeholder="Búsqueda por NIA" title="Escribe un NIA">		
+   							<input type="text" id="searchInput" class="form-control " onkeyup="searchFunction()" placeholder="Búsqueda por NIA" title="Escribe un NIA">
+   							<input class="btn btn-primary" type="submit" value="Busqueda">
+                	</form>
+
+                	<form action="#modal-search-avanced-student"  class="form-inline mt-20 ml-30" method="post">
+                		<input class="btn btn-primary" type="submit" value="Busqueda Avanzada">		
  						
                 	</form>
                 </div>
@@ -113,7 +122,8 @@
                 		<div class="row vertical-center">
                 			<h4 class="col-8 mb-10 pl-15">${m.getNombre()}</h4>
                 			<div class="col-4 text-right pr-15">
-                			<a href="#modal-assign-student-${m.getId()}" class="btn mr-5" role="button"><i class="fas fa-user-plus"></i></a>
+                			<a href="#modal-assign-student-${m.getID()}" class="btn mr-5" role="button"><i class="fas fa-user-plus"></i><span class="ml-5 d-none d-lg-inline"> Asignar usuario</span></a>
+
                 			</div>
                 		</div>
                 		<table class="table table-striped">
@@ -127,125 +137,97 @@
               				</tr>
 		            		</thead>
 		            		<tbody>
-	                				<%  
-	                				Query query = entitymanager.createQuery( "Select s " + "from Subscription s " + "where s.master=1");
-	                		      	List<Subscription> subscripciones=query.getResultList();
-	                		      	List<Student> students = new ArrayList<Student>();
-	                		      	for (Subscription sub : subscripciones){
-	                		      		Student stu = studentDAO.getStudentByNIA(sub.getStudentID());
-	                		      		students.add(stu);     		      		
-	                		      	}
-	                		      	request.setAttribute("estudiantes",students);
-	                		      	
-									%> 
-	                				<c:forEach items="${estudiantes}" var="est">
-	                					<tr>
+		            			
+				                	<%  							
+								    query = entitymanager.createQuery( "Select s from subscription s");
+				                	List<Subscription> subscriptions=query.getResultList();
+				                	List<Student> students = new ArrayList<Student>();
+				                	for (Subscription s : subscriptions){
+				                		if (s.getMaster().equals(masters.get(contadorID))){
+				                			students.add(s.getStudent());
+				                		}
+				                	}
+								    
+								    request.setAttribute("students",students);
+				                	List<Student> students_not_assigned = new ArrayList<Student>();								    
+								    query = entitymanager.createQuery("Select s from student s");
+				                	List<Student> all_students=query.getResultList();
+				                	for (Student stu : all_students){
+				                		if (!students.contains(stu)){
+				                			students_not_assigned.add(stu);
+				                		}
+				                	}
+				                	
+				                	
+								    request.setAttribute("students_not_assigned",students_not_assigned);
+								    contadorID+=1;
+								%>  
+								<c:forEach items="${students}" var="s">
+									<tr>
         		    				<th>
-        		    					${est.getFirstname()}
+        		    					${s.getFirstname()}
         		    				</th>
         		    				<td>
-        		    					${est.getSurnames()}
+        		    					${s.getSurnames()}
         		    				</td>
         		    				<td>
-        		    					${est.getNIA()}
+        		    					${s.getNIA()}
         		    				</td>
         		    				<td>
-        		    					${est.getBirth()}
+        		    					${s.getBirth()}
         		    				</td>
         		    				<td class="text">
-        		    			   		<a href="#modal-unnasign-student-${m.getId()}-${est.getNIA()}" class="btn btn-square btn-primary ml-5" role="button"><i class="fas fa-edit"></i></a>
-	                				
-	                				
-	                				</td>
-	                				</tr>
-	                				
-	                				
-	                				</c:forEach>
-                				
-                	
-                	
-                	
-                	
-                	
-                
-                
-                
+        		    			   		<a href="#modal-unnasign-student-${s.getNIA()}-${m.getID()}" class="btn btn-square btn-danger ml-5" role="button" data-toggle="tooltip" data-title="Desasignar estudiante" data-placement="left"><i class="fas fa-user-minus"></i></a>
+           										
+        		    				</td>
+        		    			</tr>
+								
+								</c:forEach>
+
                 
                 
                 			</tbody>
+                			
                 		</table>
+                		<div class="modal" id="modal-assign-student-${m.getID()}" tabindex="-1" role="dialog">
+              							  <div class="modal-dialog" role="document">
+                   							 <div class="modal-content">
+                     						   <h5 class="modal-title text-center">Asignar Estudiante</h5>
+                       						   <h6 class="modal-text text-left">Master: ${m.getNombre()}</h6>
+						                        <form id="assign-student" action="assignStudent" method="post">
+						                             <input type="hidden" id="assign-student-Master" name="masterID" value="${m.getID()}">
+						                           	 <select class="form-control" id="studentNIA" name="studentNIA">   
+											            <c:forEach items="${students_not_assigned}" var="sna">
+											            		<option value="${sna.getNIA()}">${sna.getFirstname()} ${sna.getSurnames()}</option>
+	            
+											            </c:forEach>       
+											        </select>
+						                            <div class="text-center mt-20">
+						                            <a class="btn mr-5" href="#" type="button">Cancelar</a>
+						                            <input class="btn btn-primary" type="submit" value="Asignar estudiante">
+						                      	    </div>
+						                        </form>
+                        
+								        </div>
+								   </div>
+								 </div>
+                		<div class="divider mt-0 mb-5 border-bottom"></div>
                		 </div>
+               		 
+               		 
+								 
+								 
                 </c:forEach>
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+	     					  <%  
+								    entitymanager.close();
+								    emfactory.close();
+								%>  
+       
                 
                 </div>
                 
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+            
             </div>
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
             
 
           

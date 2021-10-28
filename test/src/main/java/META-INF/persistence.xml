@@ -3,7 +3,9 @@
    <persistence-unit name="tiw_JPA" transaction-type="JTA">
       <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 	  <jta-data-source>tiw_p1DS</jta-data-source>
-      
+      <class>servlets.AssignStudentServlet</class>
+      <class>entities.Student</class>
+      <class>entities.Master</class>
       <class>entities.Subscription</class>
       
    </persistence-unit>
