@@ -119,7 +119,7 @@
 			                 
                 	<div class="container-fluid mb-20">
                 		<div class="row vertical-center">
-                			<h5 class="col-8 mb-10 pl-15">${m.getNombre()}</h5>
+                			<h5 class="col-8 mb-10 pl-15">${m.getNombre()} (${m.getEscuela()}, ${m.getCurso()})</h5>
                 			<div class="col-4 text-right pr-15">
                 			<a href="#modal-assign-student-${m.getID()}" class="btn mr-5" role="button"><i class="fas fa-user-plus"></i><span class="ml-5 d-none d-lg-inline"> Asignar usuario</span></a>
 
@@ -132,7 +132,7 @@
                  				<th style="width: 25%">Apellidos</th>
                  				<th style="width: 20%">NIA</th>
                  				<th style="width: 15%">Fecha Nacimiento</th>
-                 				<th class="text" style="width: 15%">Acciones</th>
+                 				<th class="text-right" style="width: 15%">Acciones</th>
               				</tr>
 		            		</thead>
 		            		<tbody>
@@ -175,15 +175,15 @@
         		    				<td>
         		    					${s.getBirth()}
         		    				</td>
-        		    				<td class="text">
-        		    			   		<a href="#modal-unnasign-student-${s.getNIA()}-${m.getID()}" class="btn btn-square btn-danger ml-5" role="button" data-toggle="tooltip" data-title="Desasignar estudiante" data-placement="left"><i class="fas fa-user-minus"></i></a>
+        		    				<td class="text-right">
+        		    			   		<a href="#modal-unnasign-student-${s.getNIA()}-${m.getID()}" class="btn  btn-danger mr-5" role="button" ><i class="fas fa-user-minus"></i><span class="ml-5 d-none d-lg-inline"> Desasignar usuario</span></a>
            								
 				           							<div class="modal" id="modal-unnasign-student-${s.getNIA()}-${m.getID()}" tabindex="-1" role="dialog">
 				              							  <div class="modal-dialog" role="document">
 				                   							 <div class="modal-content">
 				                     						   <h5 class="modal-title text-center">Desasignar Estudiante</h5>
 					                     						   <p class="text-left">
-			                          							  ¿Está seguro de querer desasignar al estudiante ${s.getFirstname()} ${s.getSurnames()} del máster ${m.getNombre()}?
+			                          							  ¿Está seguro de querer desasignar al estudiante ${s.getFirstname()} ${s.getSurnames()} del ${m.getNombre()}?
 			                        								</p>
 										                        <form id="unassign-student" action="unassignStudent" method="post">
 										                             <input type="hidden" id="unassign-student-Master" name="_masterID" value="${m.getID()}">
