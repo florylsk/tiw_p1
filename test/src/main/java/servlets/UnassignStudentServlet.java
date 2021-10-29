@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.persistence.*;
@@ -23,8 +24,8 @@ import entities.Subscription;
 
 
 
-@WebServlet(urlPatterns = {"/assignStudent" })
-public class AssignStudentServlet extends HttpServlet{
+@WebServlet(urlPatterns = {"/unassignStudent" })
+public class UnassignStudentServlet extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -35,7 +36,7 @@ public class AssignStudentServlet extends HttpServlet{
 	UserTransaction ut;
 	
 	
-	public AssignStudentServlet() {
+	public UnassignStudentServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -47,20 +48,25 @@ public class AssignStudentServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse res)
 		    throws ServletException, IOException{
 		
-		String _mID = req.getParameter("masterID");
-		String _sNIA = req.getParameter("studentNIA");
-	    Query query = entitymanager.createQuery( "Select s from student s where s.NIA = "+_sNIA);
-	    
-	    Student varS=(Student) query.getResultList().get(0);
-	    query = entitymanager.createQuery("Select m from master m where m.id = "+_mID);
-	    Master varM=(Master) query.getResultList().get(0);
+		
+		String _mID = req.getParameter("_masterID");
+		String _sNIA = req.getParameter("_studentNIA");    
+		int mID=Integer.parseInt(_mID);
+		int sNIA=Integer.parseInt(_sNIA);
+	    Query query = entitymanager.createQuery( "Select s from subscription s");
+	    List<Subscription> subscriptions = query.getResultList();
+	    Subscription test = null;
+	    for (Subscription s : subscriptions) {
+	    	if (s.getMaster().getID()==mID || s.getStudent().getNIA()==sNIA) {
+	    		test=s;
+	    	}
+	    }
 	    try {
-	    ut.begin();
-		Subscription sub = new Subscription();
-		sub.setMaster(varM);
-		sub.setStudent(varS);
-		entitymanager.persist(sub);
-		ut.commit();
+	    	ut.begin();
+	    	query=entitymanager.createQuery("Delete from subscription s where s.id = :id");
+	    	query.setParameter("id", test.getId());
+	    	int rows=query.executeUpdate();
+	    	ut.commit();
 	    }
 	    catch(Exception e) {
 	    	e.printStackTrace();

@@ -89,7 +89,6 @@
             
                 
                 <%  
-					
 					EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "tiw_JPA" );
 				    EntityManager entitymanager = emfactory.createEntityManager();
 				    Query query = entitymanager.createQuery( "Select m from master m");
@@ -120,7 +119,7 @@
 			                 
                 	<div class="container-fluid mb-20">
                 		<div class="row vertical-center">
-                			<h4 class="col-8 mb-10 pl-15">${m.getNombre()}</h4>
+                			<h5 class="col-8 mb-10 pl-15">${m.getNombre()}</h5>
                 			<div class="col-4 text-right pr-15">
                 			<a href="#modal-assign-student-${m.getID()}" class="btn mr-5" role="button"><i class="fas fa-user-plus"></i><span class="ml-5 d-none d-lg-inline"> Asignar usuario</span></a>
 
@@ -178,14 +177,34 @@
         		    				</td>
         		    				<td class="text">
         		    			   		<a href="#modal-unnasign-student-${s.getNIA()}-${m.getID()}" class="btn btn-square btn-danger ml-5" role="button" data-toggle="tooltip" data-title="Desasignar estudiante" data-placement="left"><i class="fas fa-user-minus"></i></a>
-           										
+           								
+				           							<div class="modal" id="modal-unnasign-student-${s.getNIA()}-${m.getID()}" tabindex="-1" role="dialog">
+				              							  <div class="modal-dialog" role="document">
+				                   							 <div class="modal-content">
+				                     						   <h5 class="modal-title text-center">Desasignar Estudiante</h5>
+					                     						   <p class="text-left">
+			                          							  ¿Está seguro de querer desasignar al estudiante ${s.getFirstname()} ${s.getSurnames()} del máster ${m.getNombre()}?
+			                        								</p>
+										                        <form id="unassign-student" action="unassignStudent" method="post">
+										                             <input type="hidden" id="unassign-student-Master" name="_masterID" value="${m.getID()}">
+										                             <input type="hidden" id="unassign-student-Student" name="_studentNIA" value="${s.getNIA()}">
+										                            <div class="text-center mt-20">
+										                            <a class="btn mr-5" href="#" type="button">Cancelar</a>
+										                            <input class="btn btn-danger" type="submit" value="Desasignar estudiante">
+										                      	    </div>
+										                        </form>
+				                        
+												        </div>
+												   </div>
+												 </div>
+				                		
+                		
+                				
         		    				</td>
         		    			</tr>
-								
 								</c:forEach>
-
                 
-                
+                	
                 			</tbody>
                 			
                 		</table>
@@ -218,11 +237,6 @@
 								 
 								 
                 </c:forEach>
-	     					  <%  
-								    entitymanager.close();
-								    emfactory.close();
-								%>  
-       
                 
                 </div>
                 
