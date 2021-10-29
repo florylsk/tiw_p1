@@ -26,10 +26,22 @@
       		title: "Usuario:Contraseña"      
     		})
   		}
+  			function failed_login(){
+	         	halfmoon.initStickyAlert({
+		        content: "Las credenciales introducidas no corresponden a ningún usuario en nuestro sistema.",
+		        title: "Login incorrecto",
+		        alertType: "alert-danger",
+		        hasDismissButton: true,
+		        timeShown: 5000,
+		    })
+				}
   		</script>
+  		
 
     </head>
     <body class="with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true" data-set-preferred-mode-onload="true">
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
+    	
         <!-- Top right toggle -->
         <button class="btn btn-action mt-10 mr-10 position-fixed top-0 right-0 dark-mode" onclick="halfmoon.toggleDarkMode()">
             <i class="fas fa-moon"></i>
@@ -39,9 +51,21 @@
         <div class="page-wrapper with-navbar-fixed-bottom">
             <!-- Sticky alerts (toasts), empty container -->
             <div class="sticky-alerts"></div>
-
+            <c:if test="${incorrect == true}">
+				 				<script>
+				 				 window.onload = function() {
+				 				    failed_login();
+				 				  };
+						         	</script>
+						         	
+									<%
+										request.setAttribute("incorrect",false);
+									%>
+						    	 </c:if>
+				 				
             <!-- Content wrapper -->
             <div class="content-wrapper mw-full text-center" style="position:relative;display:flex;align-items:center;justify-content:center;">
+		           
             	<img alt="fondo" src="${pageContext.request.contextPath}/resources/images/fondov3.jpg" style="width: 100%;height:100%;">
                 <div class="card mw-800 w-lg-600 left-auto right-auto d-inline-block" style="position:absolute;">
                     <!-- When responsive mode is active, this div is shown hiding the left column -->

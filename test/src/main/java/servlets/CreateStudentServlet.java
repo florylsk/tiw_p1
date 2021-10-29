@@ -63,6 +63,7 @@ public class CreateStudentServlet extends HttpServlet{
 		Date birth= new Date(dtt.getTime());
 		Student s = new Student (_firstname,_surnames,NIA,birth);
 		int status = studentDAO.createStudent(s);
+		req.setAttribute("student_added", true);
 		req.getRequestDispatcher("crud.jsp").forward(req, res);
 		
 		

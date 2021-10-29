@@ -72,6 +72,7 @@ public class UnassignStudentServlet extends HttpServlet{
 	    	e.printStackTrace();
 	    	
 	    }
+	    req.setAttribute("student_unassigned", true);
 	    req.getRequestDispatcher("master.jsp").forward(req, res);
 	    
 		

@@ -65,6 +65,7 @@ public class AssignStudentServlet extends HttpServlet{
 	    	e.printStackTrace();
 	    	
 	    }
+	    req.setAttribute("student_assigned", true);
 	    req.getRequestDispatcher("master.jsp").forward(req, res);
 	    
 		

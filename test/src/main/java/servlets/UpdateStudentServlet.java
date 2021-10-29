@@ -60,6 +60,7 @@ public class UpdateStudentServlet extends HttpServlet{
 		Date birth= new Date(dtt.getTime());
 		Student s = new Student (_firstname,_surnames,NIA,birth);
 		int status = studentDAO.updateStudent(s);
+		req.setAttribute("student_updated", true);
 		req.getRequestDispatcher("crud.jsp").forward(req, res);
 		
 		

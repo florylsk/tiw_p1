@@ -16,7 +16,26 @@
         <link href="${pageContext.request.contextPath}/resources/css/halfmoon-variables.min.css" rel="stylesheet" />
         <script src="${pageContext.request.contextPath}/resources/js/halfmoon.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/fa.7465cf6e1c.js"></script>
-
+		<script type="text/javascript">
+  			function student_assigned(){
+	         	halfmoon.initStickyAlert({
+		        content: "El usuario ha sido asignado correctamente.",
+		        title: "Éxito",
+		        alertType: "alert-success",
+		        hasDismissButton: true,
+		        timeShown: 5000,
+		    })
+				}
+  			function student_unassigned(){
+	         	halfmoon.initStickyAlert({
+		        content: "El usuario ha sido desasignado correctamente.",
+		        title: "Éxito",
+		        alertType: "alert-danger",
+		        hasDismissButton: true,
+		        timeShown: 5000,
+		    })
+				}
+  		</script>
 </head>
 <body class="with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true" data-set-preferred-mode-onload="true">
 	<%@page import="java.util.*,entities.*,javax.persistence.*"%>  
@@ -79,6 +98,28 @@
             <!-- Sticky alerts (toasts), empty container -->
             <!-- Reference: https://www.gethalfmoon.com/docs/sticky-alerts-toasts -->
             <div class="sticky-alerts"></div>
+            <c:if test="${student_assigned == true}">
+				 				<script>
+				 				 window.onload = function() {
+				 				    student_assigned();
+				 				  };
+						         	</script>
+						         	
+									<%
+										request.setAttribute("student_assigned",false);
+									%>
+						    	 </c:if>
+			<c:if test="${student_unassigned == true}">
+				 				<script>
+				 				 window.onload = function() {
+				 				    student_unassigned();
+				 				  };
+						         	</script>
+						         	
+									<%
+										request.setAttribute("student_unassigned",false);
+									%>
+						    	 </c:if>
             
             
             

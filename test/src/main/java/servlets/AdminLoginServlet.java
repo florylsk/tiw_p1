@@ -49,6 +49,7 @@ public class AdminLoginServlet extends HttpServlet{
 				
 				
 			} else {
+				req.setAttribute("incorrect", true);
 				req.getRequestDispatcher("access.jsp").forward(req, res);
 				
 				

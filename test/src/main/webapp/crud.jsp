@@ -16,6 +16,35 @@
         <link href="${pageContext.request.contextPath}/resources/css/halfmoon-variables.min.css" rel="stylesheet" />
         <script src="${pageContext.request.contextPath}/resources/js/halfmoon.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/fa.7465cf6e1c.js"></script>
+        <script type="text/javascript">
+  			function student_added(){
+	         	halfmoon.initStickyAlert({
+		        content: "El usuario ha sido creado correctamente.",
+		        title: "Éxito",
+		        alertType: "alert-success",
+		        hasDismissButton: true,
+		        timeShown: 5000,
+		    })
+				}
+  			function student_deleted(){
+	         	halfmoon.initStickyAlert({
+		        content: "El usuario ha sido borrado correctamente.",
+		        title: "Éxito",
+		        alertType: "alert-danger",
+		        hasDismissButton: true,
+		        timeShown: 5000,
+		    })
+				}
+  			function student_updated(){
+	         	halfmoon.initStickyAlert({
+		        content: "El usuario ha sido modificado correctamente.",
+		        title: "Éxito",
+		        alertType: "alert-primary",
+		        hasDismissButton: true,
+		        timeShown: 5000,
+		    })
+				}
+  		</script>
 
 </head>
 <body class="with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true" data-set-preferred-mode-onload="true">
@@ -114,6 +143,39 @@
             <!-- Sticky alerts (toasts), empty container -->
             <!-- Reference: https://www.gethalfmoon.com/docs/sticky-alerts-toasts -->
             <div class="sticky-alerts"></div>
+            <c:if test="${student_added == true}">
+				 				<script>
+				 				 window.onload = function() {
+				 				    student_added();
+				 				  };
+						         	</script>
+						         	
+									<%
+										request.setAttribute("student_added",false);
+									%>
+						    	 </c:if>
+			<c:if test="${student_deleted == true}">
+				 				<script>
+				 				 window.onload = function() {
+				 				    student_deleted();
+				 				  };
+						         	</script>
+						         	
+									<%
+										request.setAttribute("student_deleted",false);
+									%>
+						    	 </c:if>
+			<c:if test="${student_updated == true}">
+				 				<script>
+				 				 window.onload = function() {
+				 				    student_updated();
+				 				  };
+						         	</script>
+						         	
+									<%
+										request.setAttribute("student_updated",false);
+									%>
+						    	 </c:if>			    	 
 			<div class="w-250 m-auto">
                		<!-- <button onclick="addUser()" class="btn btn-square btn-primary w-150" type="button"><i class="fas fa-user-plus"></i>     Añadir usuario</button> -->   
                		<a href="#modal-add-student" class="btn btn-primary btn-square w-150" role="button"><i class="fas fa-user-plus"></i>     Añadir estudiante</a>              

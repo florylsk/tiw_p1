@@ -51,6 +51,7 @@ public class DeleteStudentServlet extends HttpServlet{
 		
 		Student s = studentDAO.getStudentByNIA(NIA);
 		int status = studentDAO.deleteStudent(s);	
+		req.setAttribute("student_deleted", true);
 		req.getRequestDispatcher("crud.jsp").forward(req, res);
 	}
 	
