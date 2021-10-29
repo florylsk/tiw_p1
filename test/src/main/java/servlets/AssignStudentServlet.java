@@ -41,7 +41,6 @@ public class AssignStudentServlet extends HttpServlet{
 	}
 	public void init() {
 
-		// Lee del contexto de servlet (Sesi�n a nivel de aplicaci�n)
 		ServletContext context = getServletContext();
 	}
 	protected void doPost(HttpServletRequest req, HttpServletResponse res)

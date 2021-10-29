@@ -99,25 +99,16 @@
 				    int contadorID=0;
 				%>  
                 <!-- Courses and management will be shown here -->
-                <div class="w-400 m-auto my-20">
-                	<form action="#modal-search-student" class="form-inline" method="post" >
- 
-   							<input type="text" id="searchInput" class="form-control " onkeyup="searchFunction()" placeholder="Búsqueda por NIA" title="Escribe un NIA">
-   							<input class="btn btn-primary" type="submit" value="Busqueda">
-                	</form>
-
-                	<form action="#modal-search-avanced-student"  class="form-inline mt-20 ml-30" method="post">
-                		<input class="btn btn-primary" type="submit" value="Busqueda Avanzada">		
- 						
-                	</form>
-                </div>
+                <div class="w-400 m-auto my-20 text-center">
+   					<input type="text" id="searchInput" class="form-control" onkeyup="searchFunction()" placeholder="Búsqueda por nombre, escuela o curso" title="Escribe un NIA">
+				</div>
                 
                 <div id="masters">
                 <c:forEach items="${masters}" var="m">
                 	
 
 			                 
-                	<div class="container-fluid mb-20">
+                	<div class="container-fluid mb-20 test">
                 		<div class="row vertical-center">
                 			<h5 class="col-8 mb-10 pl-15">${m.getNombre()} (${m.getEscuela()}, ${m.getCurso()})</h5>
                 			<div class="col-4 text-right pr-15">
@@ -262,7 +253,27 @@
 
 		</div>
 
-
+					<script>
+							function searchFunction() {
+ 							 var input, filter, varDiv,mainDiv, nombre, i, txtValue;
+ 							 input = document.getElementById("searchInput");
+ 							 filter = input.value.toUpperCase();
+  							mainDiv = document.getElementById("masters");
+  							varDiv = mainDiv.getElementsByClassName("container-fluid mb-20 test");
+ 							 for (i = 0; i < varDiv.length; i++) {
+ 									nombre = varDiv[i].getElementsByTagName("div")[0].getElementsByTagName("h5");
+      								txtValue = nombre[0].textContent || nombre[0].innerText;
+      								if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        							varDiv[i].style.display = "";
+      								} else {
+       									 varDiv[i].style.display = "none";
+     								 }
+   								     
+ 							 }
+							}
+					</script>
+					
+					
 
 
 	</body>

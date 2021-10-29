@@ -34,7 +34,6 @@ public class AdminLoginServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse res)
 		    throws ServletException, IOException{
 		
-		PrintWriter pw = res.getWriter();
 		String uName = req.getParameter(IAdminConstants.COLUMN_USERNAME);
 		String pWord = req.getParameter(IAdminConstants.COLUMN_PASSWORD);
 		Admin admin = new Admin(uName,pWord);
@@ -52,7 +51,7 @@ public class AdminLoginServlet extends HttpServlet{
 			} else {
 				req.getRequestDispatcher("access.jsp").forward(req, res);
 				
-				pw.println("<div class=\"tab\">Incorrect UserName or PassWord</div>");
+				
 			}
 		
 		
