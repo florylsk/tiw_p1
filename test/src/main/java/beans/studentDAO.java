@@ -55,7 +55,13 @@ public class studentDAO{
 		int status=0;
 		try {
 			Connection con=connectionDB.getConnection();
-			PreparedStatement ps=con.prepareStatement("delete from students where NIA=?");
+			
+			PreparedStatement ps=con.prepareStatement("delete from subscriptions where student=?;");
+			ps.setInt(1, student.getNIA());
+			status=ps.executeUpdate();
+			
+			
+			ps=con.prepareStatement("delete from students where NIA=?");
 			ps.setInt(1, student.getNIA());
 			status=ps.executeUpdate();
 			con.close();

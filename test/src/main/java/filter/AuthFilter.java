@@ -30,7 +30,8 @@ public class AuthFilter implements Filter {
         if (loggedIn) {
             chain.doFilter(request, response);
         } else {
-        	response.sendError(401, "THIS USER IS NOT AUTHORIZED TO SEE THIS PAGE");
+			req.getRequestDispatcher("notAllowed.jsp").forward(req, res);
+
         }
     }
 

@@ -1,15 +1,12 @@
 package beans;
 
-import java.sql.Blob;
 import java.sql.Date;
 
 public class Student{
 	private String firstname;
 	private String surnames;
-	//No se si seria mejor que fuera solo 1 atributo que tuviera los dos apellidos para evitar problemas como tu caso
 	private int NIA;
 	private Date birth;
-	private Blob photo; //lo quitaria al menos hata terminar lo obligatorio y luego si quieres lo podemos meter
 	
 	
 	
@@ -53,12 +50,7 @@ public class Student{
 	}
 
 
-	public Blob getPhoto() {
-		return this.photo;
-	}
-	public void setPhoto(Blob photo) {
-		this.photo=photo;
-	}
+
 	
 	
 
