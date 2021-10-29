@@ -38,3 +38,4 @@ commit;
 use twi_p1;
 drop table if exists subscriptions;
 create table subscriptions (id int primary key, student int ,master int , constraint student_fk foreign key(student) references students(NIA), constraint master_pk foreign key(master) references masters(id));
+

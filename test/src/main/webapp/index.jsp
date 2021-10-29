@@ -79,8 +79,17 @@
            	 			<!-- Sticky alerts (toasts), empty container -->
            				 <!-- Reference: https://www.gethalfmoon.com/docs/sticky-alerts-toasts -->
            				 <div class="sticky-alerts"></div>
-
-          
+						
+          				<div class="content-wrapper mw-full text-center" style="position:relative;display:flex;align-items:center;justify-content:center;">
+          					<div style="position:absolute">
+          						<h3>Tecnologías informáticas para la web</h3>
+	          					<h5>Proyecto 1</h5>
+	          					<h6>Realizado por Diego Muñoz del val y Florinel Olteanu</h6>
+	          					<a class="btn btn-primary" href="crud.jsp">CRUD</a>
+	          					<a class="btn btn-primary" href="master.jsp">Master</a>
+          					</div>
+          					
+          				</div>
 
 
 

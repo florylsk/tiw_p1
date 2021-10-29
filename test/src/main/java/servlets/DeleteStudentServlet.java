@@ -48,6 +48,7 @@ public class DeleteStudentServlet extends HttpServlet{
 		    throws ServletException, IOException{
 		String _NIA= req.getParameter(IStudentConstants.COLUMN_NIA);
 		int NIA=Integer.parseInt(_NIA);
+		
 		Student s = studentDAO.getStudentByNIA(NIA);
 		int status = studentDAO.deleteStudent(s);	
 		req.getRequestDispatcher("crud.jsp").forward(req, res);
