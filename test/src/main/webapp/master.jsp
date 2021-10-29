@@ -163,9 +163,9 @@
 								%>  
 								<c:forEach items="${students}" var="s">
 									<tr>
-        		    				<th>
+        		    				<td>
         		    					${s.getFirstname()}
-        		    				</th>
+        		    				</td>
         		    				<td>
         		    					${s.getSurnames()}
         		    				</td>
