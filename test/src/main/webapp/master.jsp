@@ -151,7 +151,7 @@
 			                 
                 	<div class="container-fluid mb-20 test">
                 		<div class="row vertical-center">
-                			<h5 class="col-8 mb-10 pl-15">${m.getNombre()} (${m.getEscuela()}, ${m.getCurso()})</h5>
+                			<h5 class="col-8 mb-10 pl-15">${m.getNombre()} (${m.getEscuela()}, ${m.getCurso()}) <a href="#modal-description-master-${m.getID()}"> (Descripción)</a></h5>
                 			<div class="col-4 text-right pr-15">
                 			<a href="#modal-assign-student-${m.getID()}" class="btn mr-5" role="button"><i class="fas fa-user-plus"></i><span class="ml-5 d-none d-lg-inline"> Asignar usuario</span></a>
 
@@ -208,7 +208,7 @@
         		    					${s.getBirth()}
         		    				</td>
         		    				<td class="text-right">
-        		    			   		<a href="#modal-unnasign-student-${s.getNIA()}-${m.getID()}" class="btn  btn-danger mr-5" role="button" ><i class="fas fa-user-minus"></i><span class="ml-5 d-none d-lg-inline"> Desasignar usuario</span></a>
+        		    			   		<a href="#modal-unnasign-student-${s.getNIA()}-${m.getID()}" class="btn  btn-danger mr-5" role="button" ><i class="fas fa-user-minus"></i></a>
            								
 				           							<div class="modal" id="modal-unnasign-student-${s.getNIA()}-${m.getID()}" tabindex="-1" role="dialog">
 				              							  <div class="modal-dialog" role="document">
@@ -244,7 +244,7 @@
               							  <div class="modal-dialog" role="document">
                    							 <div class="modal-content">
                      						   <h5 class="modal-title text-center">Asignar Estudiante</h5>
-                       						   <h6 class="modal-text text-left">Master: ${m.getNombre()}</h6>
+                       						   <h6 class="modal-text text-left">${m.getNombre()}</h6>
 						                        <form id="assign-student" action="assignStudent" method="post">
 						                             <input type="hidden" id="assign-student-Master" name="masterID" value="${m.getID()}">
 						                           	 <select class="form-control" id="studentNIA" name="studentNIA">   
@@ -259,6 +259,14 @@
 						                      	    </div>
 						                        </form>
                         
+								        </div>
+								   </div>
+								 </div>
+						<div class="modal" id="modal-description-master-${m.getID()}" tabindex="-1" role="dialog">
+              							  <div class="modal-dialog" role="document">
+                   							 <div class="modal-content"> 
+                       						   <h6 class="modal-text text-left">${m.getNombre()}</h6>
+                       						   <p>${m.getDescripcion()}<p>
 								        </div>
 								   </div>
 								 </div>
