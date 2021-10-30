@@ -201,7 +201,7 @@
 				%>  
                 <!-- Courses and management will be shown here -->
                 <div id="admin-courses">
-                	<table class="table table-striped" id="estudiantes">
+                	<table class="table table-striped table-hover" id="estudiantes">
             			<thead>
               				<tr>
                  				<th style="width: 25%">Nombre</th>

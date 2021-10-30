@@ -157,7 +157,7 @@
 
                 			</div>
                 		</div>
-                		<table class="table table-striped">
+                		<table class="table table-striped table-hover">
                 			<thead>
               				<tr>
                  				<th style="width: 25%">Nombre</th>
@@ -169,7 +169,7 @@
 		            		</thead>
 		            		<tbody>
 		            			
-				                	<%  							
+				                	<%  		
 								    query = entitymanager.createQuery( "Select s from subscription s");
 				                	List<Subscription> subscriptions=query.getResultList();
 				                	List<Student> students = new ArrayList<Student>();
