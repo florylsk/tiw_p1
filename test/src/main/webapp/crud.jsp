@@ -16,6 +16,7 @@
         <link href="${pageContext.request.contextPath}/resources/css/halfmoon-variables.min.css" rel="stylesheet" />
         <script src="${pageContext.request.contextPath}/resources/js/halfmoon.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/fa.7465cf6e1c.js"></script>
+        <script src="${pageContext.request.contextPath}/resources/js/sorttable.js"></script>
         <script type="text/javascript">
   			function student_added(){
 	         	halfmoon.initStickyAlert({
@@ -130,8 +131,8 @@
                             </div>
                             <div class="form-group">
                            		 <div class="custom-file">
-                                	<input type="file" name="photo" id="create-student-photo"/>
-                                	<label for="create-student-photo">Foto</label>
+                                	<input type="file" accept=".jpg" name="photo" id="create-student-photo"/>
+                                	<label for="create-student-photo">Escoja una imagen</label>
                                 </div>
                             </div>
                             <div class="text-center mt-20">
@@ -207,7 +208,7 @@
 				%>  
                 <!-- Courses and management will be shown here -->
                 <div id="admin-courses">
-                	<table class="table table-striped table-hover" id="estudiantes">
+                	<table class="table table-striped table-hover sortable" id="estudiantes">
             			<thead>
               				<tr>
                  				<th style="width: 25%">Nombre</th>
@@ -228,7 +229,7 @@
 								     </c:if>
 								     <c:if test="${s.hasPhoto() == true}">
 								         <th>
-								         <img id="student-${s.getNIA()}" src="data:image/jpeg;base64, ${s.getPhotoB64()}" height="50" style="border-radius: 50%;vertical-align: middle;display: inline-block;">
+								         <img id="student-${s.getNIA()}" src="data:image;base64, ${s.getPhotoB64()}" height="50" style="border-radius: 50%;vertical-align: middle;display: inline-block;">
         		    					 ${s.getFirstname()}
         		    					</th>
 								     </c:if>
