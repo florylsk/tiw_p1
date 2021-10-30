@@ -11,8 +11,10 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import javax.servlet.MultipartConfigElement;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -20,6 +22,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
@@ -31,6 +34,7 @@ import sql.IStudentConstants;
 
 
 @WebServlet(urlPatterns = {"/addStudent" })
+@MultipartConfig
 public class CreateStudentServlet extends HttpServlet{
 	/**
 	 * 
@@ -47,6 +51,14 @@ public class CreateStudentServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse res)
 		    throws ServletException, IOException{
 		
+		Part filePart = req.getPart("photo");
+		byte[] data = null;
+		if (filePart.getSize()>0) {
+		    data = new byte[(int) filePart.getSize()];
+		    filePart.getInputStream().read(data, 0, data.length);
+		}
+		
+
 		PrintWriter pw = res.getWriter();
 		String _firstname= req.getParameter(IStudentConstants.COLUMN_FIRSTNAME);
 		String _surnames= req.getParameter(IStudentConstants.COLUMN_SURNAMES);
@@ -62,6 +74,9 @@ public class CreateStudentServlet extends HttpServlet{
 		}
 		Date birth= new Date(dtt.getTime());
 		Student s = new Student (_firstname,_surnames,NIA,birth);
+		if (data!=null) {
+			s.setPhoto(data);
+		}
 		int status = studentDAO.createStudent(s);
 		req.setAttribute("student_added", true);
 		req.getRequestDispatcher("crud.jsp").forward(req, res);

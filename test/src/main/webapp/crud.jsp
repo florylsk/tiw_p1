@@ -111,7 +111,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <h5 class="modal-title text-center">Añadir estudiante</h5>
-                        <form id="add-student" action="addStudent" method="post">
+                        <form id="add-student" action="addStudent" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="create-student-firstname" class="required">Nombre</label>
                                 <input type="text" name="firstname" id="create-student-firstname" class="form-control" required="required" />
@@ -127,6 +127,12 @@
                             <div class="form-group">
                                 <label for="create-student-birth" class="required">Fecha de nacimiento</label>
                                 <input type="date" name="birth" id="create-student-birth" class="form-control" required="required" />
+                            </div>
+                            <div class="form-group">
+                           		 <div class="custom-file">
+                                	<input type="file" name="photo" id="create-student-photo"/>
+                                	<label for="create-student-photo">Foto</label>
+                                </div>
                             </div>
                             <div class="text-center mt-20">
                             	<a class="btn mr-5" href="#"  type="button">Cancelar</a>
@@ -214,9 +220,20 @@
         		    	<tbody>
         		    		<c:forEach items="${students}" var="s">
         		    			<tr>
-        		    				<th>
+        		    				
+        		    				<c:if test="${s.hasPhoto() == false}">
+								        <th>
         		    					${s.getFirstname()}
-        		    				</th>
+        		    					</th>
+								     </c:if>
+								     <c:if test="${s.hasPhoto() == true}">
+								         <th>
+								         <img id="student-${s.getNIA()}" src="data:image/jpeg;base64, ${s.getPhotoB64()}" height="50" style="border-radius: 50%;vertical-align: middle;display: inline-block;">
+        		    					 ${s.getFirstname()}
+        		    					</th>
+								     </c:if>
+        		    				
+        		    				
         		    				<td>
         		    					${s.getSurnames()}
         		    				</td>
@@ -281,6 +298,7 @@
            								 		
         		    				</td>
         		    			</tr>
+        		    			
         		    		</c:forEach>
         		    		
             			</tbody>

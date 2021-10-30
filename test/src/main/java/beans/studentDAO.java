@@ -13,11 +13,12 @@ public class studentDAO{
 		int status=0;
 		try {
 			Connection con=connectionDB.getConnection();
-			PreparedStatement ps= con.prepareStatement("insert into students(firstname,surnames,NIA,birth) values(?,?,?,?)");
+			PreparedStatement ps= con.prepareStatement("insert into students(firstname,surnames,NIA,birth,photo) values(?,?,?,?,?)");
 			ps.setString(1, student.getFirstname());
 			ps.setString(2, student.getSurnames());
 			ps.setInt(3, student.getNIA());
 			ps.setDate(4, student.getBirth());  //formato de la fecha
+			ps.setBytes(5, student.getPhoto());  
 			status=ps.executeUpdate();
 			con.close();
 		}
@@ -83,6 +84,7 @@ public class studentDAO{
 			ResultSet rs=ps.executeQuery();
 			while (rs.next()) {
 				Student s = new Student(rs.getString("firstname"),rs.getString("surnames"),rs.getInt("NIA"),rs.getDate("birth")); //Formato fecha
+				s.setPhoto(rs.getBytes("photo"));
 				students.add(s);
 			}
 			con.close();
