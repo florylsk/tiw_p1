@@ -36,13 +36,14 @@ public class AdminLogoutServlet extends HttpServlet{
 		
 		try {
 		 InitialContext ctx=new InitialContext();  
-	      QueueConnectionFactory f=(QueueConnectionFactory)ctx.lookup("myQueueConnectionFactory");  
+		 //IMPORTANTE:DEBE SER QUEUECONNECTIONFACTORY EN PAYARA
+	      QueueConnectionFactory f=(QueueConnectionFactory)ctx.lookup("tiwconnectionfactory");  
 	     QueueConnection con=f.createQueueConnection();  
 	     con.start(); 
         //2) create queue session  
         QueueSession ses=con.createQueueSession(false, Session.DUPS_OK_ACKNOWLEDGE);  
         //3) get the Queue object  
-        Queue t=(Queue)ctx.lookup("myQueue");  
+        Queue t=(Queue)ctx.lookup("tiwqueue");  
         //4)create QueueSender object         
         QueueSender sender=ses.createSender(t);  
         sender.setDisableMessageID(false);

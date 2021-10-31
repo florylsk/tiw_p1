@@ -1,27 +1,34 @@
-use twi_p1;
+-- Crear base de datos y el usuario para controlarla
+CREATE DATABASE BD81_A_aulamaster;
+CREATE USER 'TIW'@'localhost' IDENTIFIED BY 'Kappa123';
+GRANT ALL PRIVILEGES ON BD81_A_aulamaster.* TO 'TIW'@'localhost';
+FLUSH PRIVILEGES;
+
+use BD81_A_aulamaster;
 drop table if exists admins;
-create table admins(username varchar(100) primary key, password varchar(100), firstname varchar(100), lastname varchar(100), mail varchar(100));
-insert into admins values('ajimenez','Y9gMQe&3A?','alvaro','jimenez','ajimenez@test.com');
-insert into admins values('jalvarez','_m6A!GVqVe','javier','alvarez','jalvarez@test.com');
-insert into admins values('phernandez','+gnMN7Ve93','pablo','hernandez','phernandez@test.com');
-commit;
+create table admins(username varchar(100) primary key, password varchar(100) not null, firstname varchar(100) not null, lastname varchar(100) not null, mail varchar(100) not null);
+insert into admins values('ajimenez','Y9gMQe&3A?','Alvaro','Jimenez','ajimenez@test.com');
+insert into admins values('jalvarez','_m6A!GVqVe','Javier','Alvarez','jalvarez@test.com');
+insert into admins values('phernandez','+gnMN7Ve93','Pablo','Hernandez','phernandez@test.com');
 
 
-use twi_p1;
+
+
+drop table if exists subscriptions;
 drop table if exists students;
-create table students(firstname varchar(40), surnames varchar(100), NIA int(9) primary key, birth date);
+create table students(firstname varchar(40) not null, surnames varchar(100) not null, NIA int(9) primary key, birth date not null, photo blob);
 insert into students values('Luis','Gomez Hernandez',100406002,'2000-03-20');
 insert into students values('Felipe','Herrera Fernandez',100409492,'2000-04-25');
 insert into students values('Alberto','Hernandez Bernardo',100403562,'2000-01-12');
-commit;
 
-use twi_p1;
+
+
 drop table if exists records;
 create table records(username varchar(100),firstname varchar(40),lastname varchar(40),fecha_inicio datetime,fecha_salida datetime);
 
-use twi_p1;
+
 drop table if exists masters;
-create table masters(id int(5) primary key,nombre varchar(100), escuela varchar(40), descripcion varchar(1000), curso varchar(9));
+create table masters(id int(5) primary key,nombre varchar(100) not null, escuela varchar(40) not null, descripcion varchar(1000) not null, curso varchar(9) not null);
 insert into masters values(1,'Máster Universitario en Ciberseguridad','Escuela politécnica superior','El Máster en Ciberseguridad, ofrece un programa de marcado carácter técnico y práctico (claramente diferenciado de los másteres en seguridad de la información enfocados también a los aspectos organizativos, administrativos y legales), y en su desarrollo se aplica una metodología didáctica basada en clases presenciales, seminarios especializados, conferencias, estudio de casos prácticos, sesiones prácticas en laboratorios informáticos, tutorías, estudio y auto-aprendizaje.','2021-2022');
 insert into masters values(2,'Máster Universitario en Energías Renovables en Sistemas Eléctricos','Escuela politécnica superior','El objetivo general del Máster en Energías Renovables en Sistemas eléctricos es formar profesionales que puedan desarrollar su actividad en el sector eléctrico y en el de las energías renovables, atendiendo al desarrollo y la innovación tecnológicas de estas tecnologías emergentes.','2021-2022');
 insert into masters values(3,'Máster Universitario en Ingeniería Informática','Escuela politécnica superior','El Máster en Ingeniería Informática es un Máster Profesional que prepara para ejercer la profesión de Ingeniero en Informática y está configurado siguiendo lo establecido en las recomendaciones para la verificación de títulos oficiales de la profesión de Ingeniero en Informática, de la Secretaría General de Universidades (BOE 4 de agosto de 2009).','2022-2023');
@@ -35,8 +42,6 @@ insert into masters values(10,'Máster Universitario en Mecánica Industrial','Esc
 commit;
 
 
-use twi_p1;
-drop table if exists subscriptions;
-create table subscriptions (id int primary key, student int ,master int , constraint student_fk foreign key(student) references students(NIA), constraint master_pk foreign key(master) references masters(id));
 
-ALTER TABLE students ADD COLUMN photo blob AFTER birth;
+//create table subscriptions (id int primary key, student int ,master int , constraint student_fk foreign key(student) references students(NIA), constraint master_pk foreign key(master) references masters(id));
+
