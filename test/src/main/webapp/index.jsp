@@ -23,7 +23,7 @@
 </head>
 <body class="with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true" data-set-preferred-mode-onload="true">
 
-	<div  class="page-wrapper with-navbar" data-sidebar-type="overlayed-sm-and-down" id="particles-js">
+	<div  class="page-wrapper with-navbar" data-sidebar-type="overlayed-sm-and-down" id="particles-js" style="background-color: rgba(17, 20, 23, 1);">
 		
 
 		<!-- Navbar -->
