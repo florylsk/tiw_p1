@@ -16,12 +16,15 @@
         <link href="${pageContext.request.contextPath}/resources/css/halfmoon-variables.min.css" rel="stylesheet" />
         <script src="${pageContext.request.contextPath}/resources/js/halfmoon.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/fa.7465cf6e1c.js"></script>
+        <script src="${pageContext.request.contextPath}/resources/js/particles.min.js"></script>
+        
+        
 
 </head>
 <body class="with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true" data-set-preferred-mode-onload="true">
 
-	<div class="page-wrapper with-navbar" data-sidebar-type="overlayed-sm-and-down">
-	
+	<div  class="page-wrapper with-navbar" data-sidebar-type="overlayed-sm-and-down" id="particles-js">
+		
 
 		<!-- Navbar -->
             <nav class="navbar">
@@ -75,7 +78,9 @@
 
 
 
-				<div class="page-wrapper with-navbar with-navbar-fixed-bottom" data-sidebar-type="full-height overlayed-sm-and-down">
+				<div  class="page-wrapper with-navbar with-navbar-fixed-bottom" data-sidebar-type="full-height overlayed-sm-and-down">
+						
+					
            	 			<!-- Sticky alerts (toasts), empty container -->
            				 <!-- Reference: https://www.gethalfmoon.com/docs/sticky-alerts-toasts -->
            				 <div class="sticky-alerts"></div>
@@ -96,11 +101,23 @@
 
 					</div>
 
-		
+		<canvas class="particles-js-canvas-el"style="width: 100%; height: 100%;"></canvas>
 		</div>
 
+			
+		<script type="text/javascript">
+        /* Things to do once the DOM is loaded */
+        document.addEventListener("DOMContentLoaded", function() {
+            // Init Particle JS
+            particlesJS.load(
+                "particles-js",
+                "${pageContext.request.contextPath}/resources/js/particles.json",
+                function() {}
+            );
 
-
+           
+        });
+    </script>
 
 	</body>
 

@@ -41,7 +41,3 @@ insert into masters values(9,'Máster Universitario en Tecnologías del Sector Fin
 insert into masters values(10,'Máster Universitario en Mecánica Industrial','Escuela politénica superior','El objetivo principal del programa de Máster Universitario en Mecánica Industrial es proporcionar una formación académica avanzada en el ámbito de la mecánica especializada que demanda la industria. Los profesionales con formación superior en este máster integrarán de forma transversal conocimientos para la aplicación de las nuevas tecnologías en disciplinas tales como la mecánica de máquinas, la mecánica de estructuras, la mecánica de fluidos y la ingeniería térmica.','2022-2023');
 commit;
 
-
-
-//create table subscriptions (id int primary key, student int ,master int , constraint student_fk foreign key(student) references students(NIA), constraint master_pk foreign key(master) references masters(id));
-
