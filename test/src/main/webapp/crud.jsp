@@ -131,7 +131,7 @@
                             </div>
                             <div class="form-group">
                            		 <div class="custom-file">
-                                	<input type="file" accept=".jpg" name="photo" id="create-student-photo"/>
+                                	<input type="file" name="photo" id="create-student-photo"/>
                                 	<label for="create-student-photo">Escoja una imagen</label>
                                 </div>
                             </div>
@@ -229,7 +229,7 @@
 								     </c:if>
 								     <c:if test="${s.hasPhoto() == true}">
 								         <th>
-								         <img id="student-${s.getNIA()}" src="data:image;base64, ${s.getPhotoB64()}" height="50" style="border-radius: 50%;vertical-align: middle;display: inline-block;">
+								         <img id="student-${s.getNIA()}" src="data:image/png;base64, ${s.getPhotoB64()}" height="50" style="border-radius: 50%;vertical-align: middle;display: inline-block;">
         		    					 ${s.getFirstname()}
         		    					</th>
 								     </c:if>
