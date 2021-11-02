@@ -38,29 +38,33 @@ public class UnassignStudentServlet extends HttpServlet{
 	
 	public UnassignStudentServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
+	
 	public void init() {
 
-		// Lee del contexto de servlet (Sesi�n a nivel de aplicaci�n)
+		// lee el contexto del servlet para crear el manager 
 		ServletContext context = getServletContext();
 	}
 	protected void doPost(HttpServletRequest req, HttpServletResponse res)
 		    throws ServletException, IOException{
 		
-		
+		//coge los parametros del post request
 		String _mID = req.getParameter("_masterID");
 		String _sNIA = req.getParameter("_studentNIA");    
 		int mID=Integer.parseInt(_mID);
 		int sNIA=Integer.parseInt(_sNIA);
+		//coge todos los estudiantes de la bd
 	    Query query = entitymanager.createQuery( "Select s from subscription s");
+	    //lista de subscripciones vacia
 	    List<Subscription> subscriptions = query.getResultList();
 	    Subscription test = null;
+	    //busca si hay alguna subscripcion con ese nia y master
 	    for (Subscription s : subscriptions) {
-	    	if (s.getMaster().getID()==mID || s.getStudent().getNIA()==sNIA) {
+	    	if (s.getMaster().getID()==mID && s.getStudent().getNIA()==sNIA) {
 	    		test=s;
 	    	}
 	    }
+	    //borra la subscripcion
 	    try {
 	    	ut.begin();
 	    	query=entitymanager.createQuery("Delete from subscription s where s.id = :id");
@@ -72,6 +76,7 @@ public class UnassignStudentServlet extends HttpServlet{
 	    	e.printStackTrace();
 	    	
 	    }
+	    //para el modal del jsp
 	    req.setAttribute("student_unassigned", true);
 	    req.getRequestDispatcher("master.jsp").forward(req, res);
 	    

@@ -33,13 +33,14 @@ public class AdminLoginServlet extends HttpServlet{
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse res)
 		    throws ServletException, IOException{
-		
+		//coge los parametros del post request
 		String uName = req.getParameter(IAdminConstants.COLUMN_USERNAME);
 		String pWord = req.getParameter(IAdminConstants.COLUMN_PASSWORD);
+		//crea un objeto admin temporal y lo valida
 		Admin admin = new Admin(uName,pWord);
 		boolean login=loginDAO.validate(admin);
 		
-
+			//si login bueno proporciona los atributos de la sesion para procesarlos en el jsp
 			if (login) {	
 				HttpSession session = req.getSession();
 				session.setAttribute("nombre", admin.getFirstname());

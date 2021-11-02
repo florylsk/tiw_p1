@@ -31,20 +31,20 @@ import sql.IStudentConstants;
 
 @WebServlet(urlPatterns = {"/updateStudent" })
 public class UpdateStudentServlet extends HttpServlet{
-	/**
-	 * 
-	 */
+
+	
+	
 	private static final long serialVersionUID = 1L;
 
 	public UpdateStudentServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse res)
 		    throws ServletException, IOException{
+		//coge y procesa los parametros del post request
 		String _firstname= req.getParameter(IStudentConstants.COLUMN_FIRSTNAME);
 		String _surnames= req.getParameter(IStudentConstants.COLUMN_SURNAMES);
 		String _NIA= req.getParameter(IStudentConstants.COLUMN_NIA);
@@ -58,8 +58,11 @@ public class UpdateStudentServlet extends HttpServlet{
 			e.printStackTrace();
 		}
 		Date birth= new Date(dtt.getTime());
+		//crea un estudiante temporal
 		Student s = new Student (_firstname,_surnames,NIA,birth);
+		//modifica el estudiante con los nuevos parametros
 		int status = studentDAO.updateStudent(s);
+		//para el modal
 		req.setAttribute("student_updated", true);
 		req.getRequestDispatcher("crud.jsp").forward(req, res);
 		

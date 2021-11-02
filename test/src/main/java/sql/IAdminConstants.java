@@ -1,5 +1,5 @@
 package sql;
-
+//interfaz para usar en el DAO del login
 public interface IAdminConstants {
 	public static String TABLE_ADMINS = "admins";
 	

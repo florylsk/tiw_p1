@@ -5,7 +5,7 @@ import java.sql.*;
 import sql.IAdminConstants;
 
 
-
+//clase DAO para validar el login
 public class loginDAO{
 	
 	public static boolean validate(Admin admin) {

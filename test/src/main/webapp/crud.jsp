@@ -3,21 +3,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <!-- Meta tags -->
+        <%-- Meta tags --%>
         <meta charset="utf-8" />
-        <!-- W3C validator will probably warn here, but this is needed by Halfmoon -->
         <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
         <meta name="viewport" content="width=device-width" />
 
-        <!-- Title -->
+        <%-- Title --%>
         <title>CRUD - AulaMaster</title>
 
-        <!-- CSS and JS-->
+        <%-- CSS and JS--%>
         <link href="${pageContext.request.contextPath}/resources/css/halfmoon-variables.min.css" rel="stylesheet" />
         <script src="${pageContext.request.contextPath}/resources/js/halfmoon.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/fa.7465cf6e1c.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/sorttable.js"></script>
         <script type="text/javascript">
+        <%-- modales para enseñar cuando se realiza un accion --%>
   			function student_added(){
 	         	halfmoon.initStickyAlert({
 		        content: "El usuario ha sido creado correctamente.",
@@ -55,9 +55,9 @@
 	<div class="page-wrapper with-navbar" data-sidebar-type="overlayed-sm-and-down">
 	
 
-		<!-- Navbar -->
+		<%-- Navbar --%>
             <nav class="navbar">
-                <!-- Navbar brand -->
+                <%-- Navbar brand --%>
                 <a href="index.jsp" class="navbar-brand font-size-16">
                     <img alt="UPFV Dark Mode Logo" class="hidden-lm" src="${pageContext.request.contextPath}/resources/images/logo_white_small.png">
                     <img alt="UPFV Light Mode Logo" class="hidden-dm" src="${pageContext.request.contextPath}/resources/images/logo_black_small.png">
@@ -74,21 +74,21 @@
         			   <a href="master.jsp" class="nav-link">Buscador de Máster</a>
        			  </li>
       			  </ul>
-                <!-- Navbar form. Here, search, help and profile buttons are shown -->
+                <%-- Navbar form. Here, search, help and profile buttons are shown --%>
                 <div class="navbar-content d-none d-md-flex ml-auto">
                     <!-- dark mode button -->
                     <button class="btn btn-action ml-10" onclick="halfmoon.toggleDarkMode()">
             				<i class="fas fa-moon"></i>
            				 <span class="sr-only">Modo oscuro</span>
       				  </button>
-                    <!-- Profile dropdown -->
+                    <%-- Profile dropdown --%>
                     <div class="dropdown with-arrow">
-                        <!-- Button -->
+                        <%-- Button --%>
                         <button class="btn btn-action btn-primary ml-10" data-toggle="dropdown" type="button" id="navbar-dropdown-profile">
                             <i class="fas fa-user"></i>
                             <span class="sr-only">Perfil</span>
                         </button>
-                        <!-- Content -->
+                        <%-- Content --%>
                         <div class="dropdown-menu dropdown-menu-right w-300" aria-labelledby="navbar-dropdown-profile">
                             <div class="inline-block text-center mw-full mt-10">
                                 <img alt="Profile image" src="${pageContext.request.contextPath}/resources/images/profile.jpeg" id="profile-image" class="inline w-150" />
@@ -107,7 +107,7 @@
             
             
             <div class="page-wrapper with-navbar with-navbar-fixed-bottom" data-sidebar-type="full-height overlayed-sm-and-down">
-            <!-- Modal para crear usuario -->
+            <%-- Modal para crear usuario --%>
              <div class="modal" id="modal-add-student" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -147,9 +147,9 @@
             
             
             
-            <!-- Sticky alerts (toasts), empty container -->
-            <!-- Reference: https://www.gethalfmoon.com/docs/sticky-alerts-toasts -->
+            <%-- Sticky alerts (toasts), empty container --%>
             <div class="sticky-alerts"></div>
+            <%-- comprueba si se ha realizado un accion --%>
             <c:if test="${student_added == true}">
 				 				<script>
 				 				 window.onload = function() {
@@ -184,10 +184,9 @@
 									%>
 						    	 </c:if>			    	 
 			<div class="w-250 m-auto">
-               		<!-- <button onclick="addUser()" class="btn btn-square btn-primary w-150" type="button"><i class="fas fa-user-plus"></i>     Añadir usuario</button> -->   
                		<a href="#modal-add-student" class="btn btn-primary btn-square w-150" role="button"><i class="fas fa-user-plus"></i>     Añadir estudiante</a>              
             </div>
-          	<!-- Content -->
+          	<%-- Content --%>
             <div class="content-wrapper ">
             
             	<div class="w-250 m-auto p-20">
@@ -201,12 +200,12 @@
  						
                 	</form>
                 </div>
-                
+                <%-- coge toda la lista de estudiantes del DAO para mostrarlos --%>
                 <%  
 					List<Student> students=studentDAO.getAllStudents();
 					request.setAttribute("students",students);  
 				%>  
-                <!-- Courses and management will be shown here -->
+                <%-- Courses and management will be shown here --%>
                 <div id="admin-courses">
                 	<table class="table table-striped table-hover sortable" id="estudiantes">
             			<thead>
@@ -219,6 +218,7 @@
               				</tr>
 		            	</thead>
         		    	<tbody>
+        		    	<%-- genera las rows con los estudiantes --%>
         		    		<c:forEach items="${students}" var="s">
         		    			<tr>
         		    				
@@ -244,6 +244,7 @@
         		    				<td>
         		    					${s.getBirth()}
         		    				</td>
+        		    				<%-- genera los modales especificos de cada alumno para modificar y borrar --%>
         		    				<td class="text">
         		    			   		<a href="#modal-update-student-${s.getNIA()}" class="btn btn-square btn-primary ml-5" role="button" data-toggle="tooltip" data-title="Actualizar Estudiante" data-placement="left"><i class="fas fa-edit"></i></a>
         		    			   		
@@ -329,7 +330,7 @@
 	
 
 		</div>
-
+							<%-- funcion js para filtrar los alumnos por su NIA mientras se escribe --%>
 					<script>
 							function searchFunction() {
  							 var input, filter, table, tr, td, i, txtValue;

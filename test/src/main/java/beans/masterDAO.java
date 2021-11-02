@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+
+//clase DAO del master que contiene las funciones para su data retrieval y extraction
 public class masterDAO{
 	
 	

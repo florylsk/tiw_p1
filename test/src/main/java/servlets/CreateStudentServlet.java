@@ -51,6 +51,7 @@ public class CreateStudentServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse res)
 		    throws ServletException, IOException{
 		
+		//procesar la foto enviada por el post request, si no hay foto no hace nada
 		Part filePart = req.getPart("photo");
 		byte[] data = null;
 		if (filePart.getSize()>0) {
@@ -59,7 +60,7 @@ public class CreateStudentServlet extends HttpServlet{
 		}
 		
 
-		PrintWriter pw = res.getWriter();
+		//crea un estudiante con los parametros del post request
 		String _firstname= req.getParameter(IStudentConstants.COLUMN_FIRSTNAME);
 		String _surnames= req.getParameter(IStudentConstants.COLUMN_SURNAMES);
 		String _NIA= req.getParameter(IStudentConstants.COLUMN_NIA);
@@ -77,7 +78,9 @@ public class CreateStudentServlet extends HttpServlet{
 		if (data!=null) {
 			s.setPhoto(data);
 		}
+		//crea el estudiante llamando a la funcion del DAO correspondiente
 		int status = studentDAO.createStudent(s);
+		//atributo para el modal del jsp
 		req.setAttribute("student_added", true);
 		req.getRequestDispatcher("crud.jsp").forward(req, res);
 		

@@ -1,5 +1,5 @@
 package sql;
-
+//interfaz para usarlo en el DAO de estudiantes
 public interface IStudentConstants {
 	public static String TABLE_STUDENTS = "students";
 	

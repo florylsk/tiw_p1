@@ -7,7 +7,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 
-
+//clase para conectarse al datasource del payara
 public class connectionDB{
 	
 	public static Connection getConnection() {

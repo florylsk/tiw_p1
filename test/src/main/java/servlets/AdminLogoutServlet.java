@@ -37,7 +37,7 @@ public class AdminLogoutServlet extends HttpServlet{
 		try {
 		 InitialContext ctx=new InitialContext();  
 		 //IMPORTANTE:DEBE SER QUEUECONNECTIONFACTORY EN PAYARA
-	      QueueConnectionFactory f=(QueueConnectionFactory)ctx.lookup("tiwconnectionfactory");  
+	     QueueConnectionFactory f=(QueueConnectionFactory)ctx.lookup("tiwconnectionfactory");  
 	     QueueConnection con=f.createQueueConnection();  
 	     con.start(); 
         //2) create queue session  
