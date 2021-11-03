@@ -37,7 +37,7 @@
 				}
   		</script>
 </head>
-<body class="with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true" data-set-preferred-mode-onload="true">
+<body class="dark-mode with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true" data-set-preferred-mode-onload="true">
 	<%@page import="java.util.*,entities.*,javax.persistence.*"%>  
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
 	<div class="page-wrapper with-navbar" data-sidebar-type="overlayed-sm-and-down">

@@ -17,7 +17,7 @@
         <script src="${pageContext.request.contextPath}/resources/js/fa.7465cf6e1c.js"></script>
 
 </head>
-<body class="with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true" data-set-preferred-mode-onload="true">
+<body class="dark-mode with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true" data-set-preferred-mode-onload="true">
 
 	<div class="page-wrapper with-navbar" data-sidebar-type="overlayed-sm-and-down">
 	

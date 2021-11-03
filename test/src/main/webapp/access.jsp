@@ -37,7 +37,7 @@
   		
 
     </head>
-    <body class="with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true" data-set-preferred-mode-onload="true">
+    <body class="dark-mode with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true" data-set-preferred-mode-onload="true">
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
     	
         <%-- Top right toggle --%>
