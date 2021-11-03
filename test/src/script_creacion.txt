@@ -16,10 +16,10 @@ insert into admins values('phernandez','+gnMN7Ve93','Pablo','Hernandez','phernan
 
 drop table if exists subscriptions;
 drop table if exists students;
-create table students(firstname varchar(40) not null, surnames varchar(100) not null, NIA int(9) primary key, birth date not null, photo blob);
-insert into students values('Luis','Gomez Hernandez',100406002,'2000-03-20',);
-insert into students values('Felipe','Herrera Fernandez',100409492,'2000-04-25',);
-insert into students values('Alberto','Hernandez Bernardo',100403562,'2000-01-12',);
+create table students(firstname varchar(40) not null, surnames varchar(100) not null, NIA int(9) primary key, birth date not null, photo mediumblob);
+insert into students values('Luis','Gomez Hernandez',100406002,'2000-03-20',null);
+insert into students values('Felipe','Herrera Fernandez',100409492,'2000-04-25',null);
+insert into students values('Alberto','Hernandez Bernardo',100403562,'2000-01-12',null);
 
 
 
