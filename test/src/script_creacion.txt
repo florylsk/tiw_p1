@@ -1,10 +1,10 @@
 -- Crear base de datos y el usuario para controlarla
-CREATE DATABASE BD81_A_aulamaster;
+CREATE DATABASE BD82_A_aulamaster;
 CREATE USER 'TIW'@'localhost' IDENTIFIED BY 'Kappa123';
-GRANT ALL PRIVILEGES ON BD81_A_aulamaster.* TO 'TIW'@'localhost';
+GRANT ALL PRIVILEGES ON BD82_A_aulamaster.* TO 'TIW'@'localhost';
 FLUSH PRIVILEGES;
 
-use BD81_A_aulamaster;
+use BD82_A_aulamaster;
 drop table if exists admins;
 create table admins(username varchar(100) primary key, password varchar(100) not null, firstname varchar(100) not null, lastname varchar(100) not null, mail varchar(100) not null);
 insert into admins values('ajimenez','Y9gMQe&3A?','Alvaro','Jimenez','ajimenez@test.com');

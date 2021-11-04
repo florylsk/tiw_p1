@@ -98,7 +98,7 @@
                                 <span class="hidden-lm"><i class="fas fa-sun"></i> Modo claro</span>
                                 <span class="hidden-dm"><i class="fas fa-moon"></i> Modo oscuro</span>
                             </a>
-                            <a href="/waem81A/adminlogout" class="dropdown-item text-danger"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+                            <a href="/waem82A/adminlogout" class="dropdown-item text-danger"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
                         </div>
                     </div>
                 </div>
